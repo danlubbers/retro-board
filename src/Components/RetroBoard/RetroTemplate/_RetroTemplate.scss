@@ -1,21 +1,40 @@
 .template-card {
   width: 100%;
-  padding: 10px;
   border: 1px solid black;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 
   .template-name {
     font-size: 1.5em;
   }
 
   .add-item {
-    width: 10em;
+    margin: 10px 0;
+    width: 90%;
     border: none;
     border-radius: 5px;
     background-color: #999;
   }
 
+  .item-container {
+    width: 90%;
+
+    .individual-items {
+      padding-top: 10px;
+      background-color: $teal;
+    }
+  }
+
   .delete-arrow-container {
+    margin: 10px 0;
+    padding-bottom: 5px;
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
+
+    .item-btn {
+      background-color: transparent;
+      border: none;
+    }
   }
 }

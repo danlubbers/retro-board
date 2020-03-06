@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import WentWell from './WentWell/WentWell';
-import ToImprove from './ToImprove/ToImprove';
-import ActionItems from './ActionItems/ActionItems';
+// import ToImprove from './ToImprove/ToImprove';
+// import ActionItems from './ActionItems/ActionItems';
 
 export default function RetroBoard() {
 
@@ -9,14 +9,14 @@ export default function RetroBoard() {
     'Went Well 1', 
     'Went Well 2'
   ])
-  const [toImprove, setToImprove] = useState([
-    'To Improve 1',
-    'To Improve 2'
-  ])
-  const [actionItems, setActionItems] = useState([
-    'Action Items 1',
-    'Action Items 2'
-  ])
+  // const [toImprove, setToImprove] = useState([
+  //   'To Improve 1',
+  //   'To Improve 2'
+  // ])
+  // const [actionItems, setActionItems] = useState([
+  //   'Action Items 1',
+  //   'Action Items 2'
+  // ])
 
   const [templateName, setTemplateName] = useState('') ;
 
@@ -29,7 +29,7 @@ export default function RetroBoard() {
           setItem={setWentWell}
           templateName={templateName || 'Went Well'}
         />
-        <ToImprove 
+        {/* <ToImprove 
           item={toImprove}
           setItem={setToImprove}
           templateName={templateName || 'To Improve'}
@@ -38,7 +38,7 @@ export default function RetroBoard() {
           item={actionItems}
           setItem={setActionItems}
           templateName={templateName || 'Action Items'}
-        />
+        /> */}
   
       </div>
     </div>
