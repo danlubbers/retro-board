@@ -8,6 +8,8 @@ export default function WentWell(props) {
       <RetroTemplate 
         item={props.item}
         setItem={props.setItem}
+        newItem={props.newItem}
+        deleteItem={props.deleteItem}
         templateName={props.templateName || 'Went Well'}
       />
     </div>
@@ -17,5 +19,6 @@ export default function WentWell(props) {
 WentWell.propTypes = {
   item: PropTypes.array.isRequired,
   setItem: PropTypes.func.isRequired,
+  deleteItem: PropTypes.func.isRequired,
   templateName: PropTypes.string.isRequired
 }

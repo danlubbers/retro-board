@@ -7,7 +7,7 @@ console.log({props})
     <div className='template-card'>
       <h1 className='template-name'>{props.templateName}</h1>
 
-        <button className='add-item'>&#43;</button>
+        <button className='add-item' onClick={props.newItem}>&#43;</button>
         <div className='item-container'>
           {props.item.map((list, idx) => {
             return (
@@ -15,7 +15,7 @@ console.log({props})
                 <li className='individual-items' key={`List li - ${idx}`}>{list}
                   <div className='delete-arrow-container'>
                     <button className='item-btn'>&lt;</button>
-                    <button className='item-btn'>&times;</button>
+                    <button className='item-btn' onClick={_=> props.deleteItem(idx)}>&times;</button>
                     <button className='item-btn'>&gt;</button>
                   </div>
                 </li>
@@ -32,5 +32,6 @@ console.log({props})
 RetroTemplate.propTypes = {
   item: PropTypes.array.isRequired,
   setItem: PropTypes.func.isRequired,
+  deleteItem: PropTypes.func.isRequired,
   templateName: PropTypes.string.isRequired
 }
