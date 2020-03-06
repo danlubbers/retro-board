@@ -5,23 +5,19 @@ import ActionItems from './ActionItems/ActionItems';
 
 export default function RetroBoard() {
 
-  const [wentWell, setWentWell] = useState([
-    'Went Well 1', 
-    'Went Well 2'
-  ])
-  const [toImprove, setToImprove] = useState([
-    'To Improve 1',
-    'To Improve 2'
-  ])
-  const [actionItems, setActionItems] = useState([
-    'Action Items 1',
-    'Action Items 2', 
-  ])
-
+  const [wentWell, setWentWell] = useState(['Test 1', 'Test 2'])
+  const [toImprove, setToImprove] = useState([])
+  const [actionItems, setActionItems] = useState([])
   const [templateName, setTemplateName] = useState('') ;
 
   const newItem = () => {
     setWentWell([...wentWell, '']);
+  }
+
+  const updateItem = (userInput, idx) => {
+    const newWellWellItems = [...wentWell];
+    newWellWellItems[idx] = userInput;
+    setWentWell(newWellWellItems);
   }
 
   const deleteItem = idx => {
@@ -36,6 +32,7 @@ export default function RetroBoard() {
           item={wentWell}
           setItem={setWentWell}
           newItem={newItem}
+          updateItem={updateItem}
           deleteItem={deleteItem}
           templateName={templateName || 'Went Well'}
 

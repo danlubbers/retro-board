@@ -16,13 +16,21 @@
     border-radius: 5px;
     background-color: #999;
   }
-
+  
   .item-container {
     width: 90%;
-
+    
     .individual-items {
       padding-top: 10px;
+      border-radius: 5px;
       background-color: $teal;
+      
+      input {
+        width: 90%;
+        height: 25px;
+        border: 0px solid;
+        border-radius: 5px;
+      }
     }
   }
 
