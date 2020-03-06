@@ -1,0 +1,24 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat&display=swap');
+
+// Variables
+$font-family: 'Montserrat', sans-serif;
+$teal: #009588;
+$salmon: #E91D63;
+$purple: #9C29B0;
+
+
+@import './Components/RetroBoard/RetroBoard';
+@import './Components/RetroBoard/RetroTemplate/RetroTemplate';
+@import './Components/RetroBoard/WentWell/WentWell';
+@import './Components/RetroBoard/ActionItems/ActionItems';
+
+
+.App {
+  // background-color: red;
+  text-align: center;
+
+  h1, h2, h3, h4, h5 {
+    font: $font-family;
+  }
+}
+
