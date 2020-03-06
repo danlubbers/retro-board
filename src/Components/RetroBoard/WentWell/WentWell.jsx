@@ -20,6 +20,7 @@ export default function WentWell(props) {
 WentWell.propTypes = {
   item: PropTypes.array.isRequired,
   setItem: PropTypes.func.isRequired,
+  newItem: PropTypes.func.isRequired,
   updateItem: PropTypes.func.isRequired,
   deleteItem: PropTypes.func.isRequired,
   templateName: PropTypes.string.isRequired

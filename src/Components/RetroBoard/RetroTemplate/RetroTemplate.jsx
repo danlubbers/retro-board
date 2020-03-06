@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types';
 
 export default function RetroTemplate(props) {
-console.log({props})
+// console.log({props})
   return (
     <div className='template-card'>
       <h1 className='template-name'>{props.templateName}</h1>
@@ -36,7 +36,8 @@ console.log({props})
 RetroTemplate.propTypes = {
   item: PropTypes.array.isRequired,
   setItem: PropTypes.func.isRequired,
-  updateItem: PropTypes.func.isRequired,
-  deleteItem: PropTypes.func.isRequired,
+  newItem: PropTypes.func,
+  updateItem: PropTypes.func,
+  deleteItem: PropTypes.func,
   templateName: PropTypes.string.isRequired
 }
