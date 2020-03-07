@@ -13,10 +13,12 @@ export default function RetroTemplate(props) {
             return (
               <div key={`List ul - ${idx}`} className='individual-items'>
                 <input 
+                  type='text'
                   value={item}
                   placeholder='Type a task...'
                   aria-label='Type a task...'
-                  onChange={e => props.updateItem(e.target.value, idx)}  />
+                  onChange={e => props.updateItem(e.target.value, idx)}  
+                />
                   <div className='delete-arrow-container'>
                     <button className='item-btn'>&lt;</button>
                     <button className='item-btn' onClick={_=> props.deleteItem(idx)}>&times;</button>

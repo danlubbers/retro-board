@@ -8,6 +8,9 @@ export default function ToImprove(props) {
       <RetroTemplate 
         item={props.item}
         setItem={props.setItem}
+        newItem={props.newItem}
+        updateItem={props.updateItem}
+        deleteItem={props.deleteItem}
         templateName={props.templateName || 'To Improve'}
       />
     </div>
