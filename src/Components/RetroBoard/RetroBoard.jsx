@@ -20,9 +20,10 @@ export default function RetroBoard() {
   }
 
   const updateItem = (userInput, idx) => {
-      const newWellWellItems = [...wentWell];
-      newWellWellItems[idx] = userInput;
-      setWentWell(newWellWellItems);
+      const newWentWellItems = [...wentWell];
+      newWentWellItems[idx] = userInput;
+      setWentWell(newWentWellItems);
+    
   }
 
   const deleteItem = idx => {

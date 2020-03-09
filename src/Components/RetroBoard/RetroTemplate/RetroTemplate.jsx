@@ -4,10 +4,7 @@ import PropTypes from 'prop-types';
 export default function RetroTemplate(props) {
 // console.log({props})
   return (
-    <div className='template-card'>
-      <h1 className='template-name'>{props.templateName}</h1>
-
-        <button className='add-item' onClick={props.newItem}>&#43;</button>
+      <>
         <div className='item-container'>
           {props.item.map((item, idx) => {
             return (
@@ -29,9 +26,10 @@ export default function RetroTemplate(props) {
             )
           })}
         </div>
+        </>
         
     
-    </div>
+    
   )
 }
 

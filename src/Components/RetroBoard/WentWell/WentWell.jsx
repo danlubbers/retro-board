@@ -4,16 +4,24 @@ import RetroTemplate from '../RetroTemplate/RetroTemplate'
 
 export default function WentWell(props) {
   return (
-    <div className='wentwell-template-container'>
-      <RetroTemplate 
-        item={props.item}
-        setItem={props.setItem}
-        newItem={props.newItem}
-        updateItem={props.updateItem}
-        deleteItem={props.deleteItem}
-        templateName={props.templateName || 'Went Well'}
-      />
-    </div>
+    <>
+      <div className='template-card'>
+        <h1 className='template-name'>{props.templateName}</h1>
+        <div className='wentwell-template-container'>
+          
+        <button className='add-item' onClick={props.newItem}>&#43;</button>
+        
+          <RetroTemplate 
+            item={props.item}
+            setItem={props.setItem}
+            newItem={props.newItem}
+            updateItem={props.updateItem}
+            deleteItem={props.deleteItem}
+            templateName={props.templateName || 'Went Well'}
+          />
+        </div>
+      </div>
+    </>
   )
 }
 
