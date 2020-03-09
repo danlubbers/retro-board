@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types';
-import RetroTemplate from '../RetroTemplate/RetroTemplate'
+// import RetroTemplate from '../RetroTemplate/RetroTemplate'
 
 export default function WentWell(props) {
   return (
@@ -10,15 +10,37 @@ export default function WentWell(props) {
         <div className='wentwell-template-container'>
           
         <button className='add-item' onClick={props.newItem}>&#43;</button>
+
+        <div className='item-container'>
+          {props.item.map((item, idx) => {
+            return (
+              <div key={`List ul - ${idx}`} className='individual-items'>
+                <input 
+                  type='text'
+                  value={item}
+                  placeholder='Type a task...'
+                  aria-label='Type a task...'
+                  onChange={e => props.updateItem(e.target.value, idx)}  
+                />
+                  <div className='delete-arrow-container'>
+                    <button className='item-btn'>&lt;</button>
+                    <button className='item-btn' onClick={_=> props.deleteItem(idx)}>&times;</button>
+                    <button className='item-btn'>&gt;</button>
+                  </div>
+              
+              </div>
+            )
+          })}
+        </div>
         
-          <RetroTemplate 
+          {/* <RetroTemplate 
             item={props.item}
             setItem={props.setItem}
             newItem={props.newItem}
             updateItem={props.updateItem}
             deleteItem={props.deleteItem}
             templateName={props.templateName || 'Went Well'}
-          />
+          /> */}
         </div>
       </div>
     </>

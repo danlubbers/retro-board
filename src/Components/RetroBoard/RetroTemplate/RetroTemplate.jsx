@@ -5,7 +5,7 @@ export default function RetroTemplate(props) {
 // console.log({props})
   return (
       <>
-        <div className='item-container'>
+        {/* <div className='item-container'>
           {props.item.map((item, idx) => {
             return (
               <div key={`List ul - ${idx}`} className='individual-items'>
@@ -25,7 +25,7 @@ export default function RetroTemplate(props) {
               </div>
             )
           })}
-        </div>
+        </div> */}
         </>
         
     
