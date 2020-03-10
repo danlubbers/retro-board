@@ -5,9 +5,9 @@ import ActionItems from './ActionItems/ActionItems';
 
 export default function RetroBoard() {
 
-  const [wentWell, setWentWell] = useState(['Went Well 1', 'Went Well 2'])
-  const [toImprove, setToImprove] = useState(['To Improve 1', 'To Improve 2'])
-  const [actionItem, setActionItem] = useState(['Action Item 1', 'Action Item 2'])
+  const [wentWell, setWentWell] = useState([''])
+  const [toImprove, setToImprove] = useState([''])
+  const [actionItem, setActionItem] = useState([''])
   const [templateName, setTemplateName] = useState('') ;
 
   // New Items
@@ -34,12 +34,44 @@ export default function RetroBoard() {
       setActionItem(newActionItems);
   }
 
+  // Move Item to the Left 
+  const moveLeftWentWell = idx => {
+    setActionItem([...actionItem, wentWell.filter((item, currentIdx) => currentIdx === idx ? item : null)])
+    deleteWentWellItem(idx);
+  } 
+
+  const moveLeftToImprove = idx => {
+    setWentWell([...wentWell, toImprove.filter((item, currentIdx) => currentIdx === idx ? item : null)])
+    deleteToImproveItem(idx);
+  } 
+
+  const moveLeftActionItem = idx => {
+    setToImprove([...toImprove, actionItem.filter((item, currentIdx) => currentIdx === idx ? item : null)])
+    deleteActionItem(idx);
+  } 
+
   // Delete Item 
   const deleteWentWellItem = idx => setWentWell(wentWell.filter((item, currentIdx) => currentIdx !== idx));
-  const deleteToImproveItem = idx => setToImprove(toImprove.filter((item, currentIdx) => currentIdx !== idx));
-  const deleteActionItem = idx => setActionItem(actionItem.filter((item, currentIdx) => currentIdx !== idx));
-  
 
+  const deleteToImproveItem = idx => setToImprove(toImprove.filter((item, currentIdx) => currentIdx !== idx));
+
+  const deleteActionItem = idx => setActionItem(actionItem.filter((item, currentIdx) => currentIdx !== idx));
+
+  // Move Item to the Right
+  const moveRightWentWell = idx => {
+    setToImprove([...toImprove, wentWell.filter((item, currentIdx) => currentIdx === idx ? item : null)])
+    deleteWentWellItem(idx);
+  } 
+  const moveRightToImprove = idx => {
+    setActionItem([...actionItem, toImprove.filter((item, currentIdx) => currentIdx === idx ? item : null)])
+    deleteToImproveItem(idx);
+  } 
+  const moveRightActionItem = idx => {
+    setWentWell([...wentWell, actionItem.filter((item, currentIdx) => currentIdx === idx ? item : null)])
+    deleteActionItem(idx);
+  } 
+  
+  console.log({wentWell})
   return (
     <div className='retroboard-container'>
       <h1 className='retroboard-title'>RETROBOARD</h1>
@@ -49,7 +81,9 @@ export default function RetroBoard() {
           setItem={setWentWell}
           newItem={newWentWellItem}
           updateItem={updateWentWellItem}
+          moveItemleft={moveLeftWentWell}
           deleteItem={deleteWentWellItem}
+          moveItemRight={moveRightWentWell}
           templateName={templateName || 'Went Well'}
 
         />
@@ -58,7 +92,9 @@ export default function RetroBoard() {
           setItem={setToImprove}
           newItem={newToImproveItem}
           updateItem={updateToImproveItem}
+          moveItemleft={moveLeftToImprove}
           deleteItem={deleteToImproveItem}
+          moveItemRight={moveRightToImprove}
           templateName={templateName || 'To Improve'}
         />
 
@@ -67,7 +103,9 @@ export default function RetroBoard() {
           setItem={setActionItem}
           newItem={newActionItem}
           updateItem={updateActionItem}
+          moveItemleft={moveLeftActionItem}
           deleteItem={deleteActionItem}
+          moveItemRight={moveRightActionItem}
           templateName={templateName || 'Action Items'}
         />
   

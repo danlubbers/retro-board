@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 // import RetroTemplate from '../RetroTemplate/RetroTemplate'
 
 export default function WentWell(props) {
+  console.log({props})
   return (
     <>
       <div className='template-card'>
@@ -23,9 +24,9 @@ export default function WentWell(props) {
                   onChange={e => props.updateItem(e.target.value, idx)}  
                 />
                   <div className='delete-arrow-container'>
-                    <button className='item-btn'>&lt;</button>
+                    <button className='item-btn' onClick={_=> props.moveItemleft(idx)}>&lt;</button>
                     <button className='item-btn' onClick={_=> props.deleteItem(idx)}>&times;</button>
-                    <button className='item-btn'>&gt;</button>
+                    <button className='item-btn' onClick={_=> props.moveItemRight(idx)}>&gt;</button>
                   </div>
               
               </div>
@@ -53,5 +54,6 @@ WentWell.propTypes = {
   newItem: PropTypes.func.isRequired,
   updateItem: PropTypes.func.isRequired,
   deleteItem: PropTypes.func.isRequired,
+  moveItemRight: PropTypes.func.isRequired,
   templateName: PropTypes.string.isRequired
 }

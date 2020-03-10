@@ -23,9 +23,9 @@ export default function ToImprove(props) {
                   onChange={e => props.updateItem(e.target.value, idx)}  
                 />
                   <div className='delete-arrow-container'>
-                    <button className='item-btn'>&lt;</button>
+                    <button className='item-btn' onClick={_=> props.moveItemleft(idx)}>&lt;</button>
                     <button className='item-btn' onClick={_=> props.deleteItem(idx)}>&times;</button>
-                    <button className='item-btn'>&gt;</button>
+                    <button className='item-btn' onClick={_=> props.moveItemRight(idx)}>&gt;</button>
                   </div>
               
               </div>
