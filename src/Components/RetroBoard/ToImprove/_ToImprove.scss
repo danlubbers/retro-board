@@ -1,4 +1,8 @@
 .toimprove-template-container {
   width: 90%;
-  background-color: skyblue;
+  // background-color: skyblue;
+
+  .individual-to-improve {
+    background-color: $salmon;
+  }
 }

@@ -8,14 +8,16 @@
   .template-name {
     margin: 10px 0;
     font-size: 1.5em;
+    color: $charcoal;
   }
 
   .add-item {
     margin: 20px 0 10px 0;
-    width: 90%;
+    width: 95%;
+    height: 25px;
     border: none;
     border-radius: 5px;
-    background-color: #999;
+    background-color: rgb(214, 214, 214);
   }
   
   .item-container {
@@ -29,7 +31,6 @@
       margin: 10px 0;
       padding-top: 10px;
       border-radius: 5px;
-      background-color: $teal;
       
       input {
         width: 90%;

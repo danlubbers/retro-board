@@ -5,9 +5,9 @@ import ActionItems from './ActionItems/ActionItems';
 
 export default function RetroBoard() {
 
-  const [wentWell, setWentWell] = useState(['Test 1', 'Test 2'])
-  const [toImprove, setToImprove] = useState([])
-  const [actionItem, setActionItem] = useState([])
+  const [wentWell, setWentWell] = useState(['Went Well 1', 'Went Well 2'])
+  const [toImprove, setToImprove] = useState(['To Improve 1', 'To Improve 2'])
+  const [actionItem, setActionItem] = useState(['Action Item 1', 'Action Item 2'])
   const [templateName, setTemplateName] = useState('') ;
 
   // New Items

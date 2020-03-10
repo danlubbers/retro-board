@@ -14,7 +14,7 @@ export default function ToImprove(props) {
         <div className='item-container'>
           {props.item.map((item, idx) => {
             return (
-              <div key={`List ul - ${idx}`} className='individual-items'>
+              <div key={`List ul - ${idx}`} className='individual-items individual-to-improve'>
                 <input 
                   type='text'
                   value={item}
