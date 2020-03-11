@@ -50,11 +50,18 @@
       .font-awesome-container {
         display: flex;
         justify-content: flex-end;
+        align-items: center;
 
         .font-awesome-icon {
-          margin: 0 5px 5px 0;
+          margin-bottom: 5px;
           border: none;
           background-color: transparent;
+        }
+
+        .counter {
+          font-size: 1.5em;
+          margin-right: 5px;
+          color: $eggshell;
         }
     }
     }

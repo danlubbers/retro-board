@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faThumbsUp, faRubleSign } from '@fortawesome/free-solid-svg-icons'
+import { faThumbsUp } from '@fortawesome/free-solid-svg-icons'
 
 export default function WentWell(props) {
   console.log({props})
@@ -31,22 +31,17 @@ export default function WentWell(props) {
                     <button className='item-btn' onClick={_=> props.deleteItem(idx)}>&times;</button>
                     <button className='item-btn' onClick={_=> props.moveItemRight(idx)}>&gt;</button>
                   </div>
+
                   <div className='font-awesome-container'>
-                    <button className='font-awesome-icon'><FontAwesomeIcon icon={faThumbsUp} color='white' size='2x'/></button>
+                    <button className='font-awesome-icon' onClick={props.counter}><FontAwesomeIcon icon={faThumbsUp} color='white' size='2x'/></button>
+                    <p className='counter'>{props.countWentWell}</p>
                   </div>
+
               </div>
             )
           })}
         </div>
         
-          {/* <RetroTemplate 
-            item={props.item}
-            setItem={props.setItem}
-            newItem={props.newItem}
-            updateItem={props.updateItem}
-            deleteItem={props.deleteItem}
-            templateName={props.templateName || 'Went Well'}
-          /> */}
         </div>
       </div>
     </>

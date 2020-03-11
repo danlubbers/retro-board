@@ -10,6 +10,9 @@ export default function RetroBoard() {
   const [actionItem, setActionItem] = useState([''])
   const [templateName, setTemplateName] = useState('') ;
 
+  let [countWentWell, setCountWentWell] = useState(0);
+  let [countToImprove, setCountToImprove] = useState(0);
+
   // New Items
   const newWentWellItem = () => setWentWell([...wentWell, '']);
   const newToImproveItem = () => setToImprove([...toImprove, ''])
@@ -70,6 +73,17 @@ export default function RetroBoard() {
     setWentWell([...wentWell, actionItem.filter((item, currentIdx) => currentIdx === idx ? item : null)])
     deleteActionItem(idx);
   } 
+
+  // Counters
+  const wentWellCounter = () => {
+    console.log(countWentWell++)
+    setCountWentWell(countWentWell++);
+  }
+
+  const toImproveCounter = () => {
+    console.log(countToImprove++)
+    setCountToImprove(countToImprove++);
+  }
   
   console.log({wentWell})
   return (
@@ -85,6 +99,9 @@ export default function RetroBoard() {
           deleteItem={deleteWentWellItem}
           moveItemRight={moveRightWentWell}
           templateName={templateName || 'Went Well'}
+          countWentWell={countWentWell}
+          setCountWentWell={setCountWentWell}
+          counter={wentWellCounter}
 
         />
         <ToImprove 
@@ -96,6 +113,9 @@ export default function RetroBoard() {
           deleteItem={deleteToImproveItem}
           moveItemRight={moveRightToImprove}
           templateName={templateName || 'To Improve'}
+          countToImprove={countToImprove}
+          setCountToImprove={setCountToImprove}
+          counter={toImproveCounter}
         />
 
         <ActionItems 

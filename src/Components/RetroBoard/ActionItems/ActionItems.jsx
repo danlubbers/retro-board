@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types';
-// import RetroTemplate from '../RetroTemplate/RetroTemplate'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faThumbsUp } from '@fortawesome/free-solid-svg-icons'
 
 export default function ActionItems(props) {
   return (
@@ -26,6 +27,10 @@ export default function ActionItems(props) {
                         <button className='item-btn' onClick={_=> props.moveItemleft(idx)}>&lt;</button>
                         <button className='item-btn' onClick={_=> props.deleteItem(idx)}>&times;</button>
                         <button className='item-btn' onClick={_=> props.moveItemRight(idx)}>&gt;</button>
+                      </div>
+
+                      <div className='font-awesome-container'>
+                        <button className='font-awesome-icon'><FontAwesomeIcon icon={faThumbsUp} color='white' size='2x'/></button>
                       </div>
                   
                   </div>

@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types';
-// import RetroTemplate from '../RetroTemplate/RetroTemplate'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faThumbsUp } from '@fortawesome/free-solid-svg-icons'
 
 export default function ToImprove(props) {
   return (
@@ -28,6 +29,11 @@ export default function ToImprove(props) {
                     <button className='item-btn' onClick={_=> props.moveItemRight(idx)}>&gt;</button>
                   </div>
               
+                  <div className='font-awesome-container'>
+                    <button className='font-awesome-icon' onClick={props.counter}><FontAwesomeIcon icon={faThumbsUp} color='white' size='2x'/></button>
+                    <p className='counter'>{props.countToImprove}</p>
+                  </div>
+
               </div>
             )
           })}
