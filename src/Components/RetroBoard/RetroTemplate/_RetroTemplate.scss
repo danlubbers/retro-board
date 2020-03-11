@@ -46,6 +46,17 @@
       ::placeholder {
         color: $eggshell;
       }
+
+      .font-awesome-container {
+        display: flex;
+        justify-content: flex-end;
+
+        .font-awesome-icon {
+          margin: 0 5px 5px 0;
+          border: none;
+          background-color: transparent;
+        }
+    }
     }
   }
 

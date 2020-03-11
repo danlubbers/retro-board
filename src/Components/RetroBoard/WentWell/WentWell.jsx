@@ -1,9 +1,11 @@
 import React from 'react'
 import PropTypes from 'prop-types';
-// import RetroTemplate from '../RetroTemplate/RetroTemplate'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faThumbsUp, faRubleSign } from '@fortawesome/free-solid-svg-icons'
 
 export default function WentWell(props) {
   console.log({props})
+  
   return (
     <>
       <div className='template-card'>
@@ -23,12 +25,15 @@ export default function WentWell(props) {
                   aria-label='Type a task...'
                   onChange={e => props.updateItem(e.target.value, idx)}  
                 />
+                
                   <div className='delete-arrow-container'>
                     <button className='item-btn' onClick={_=> props.moveItemleft(idx)}>&lt;</button>
                     <button className='item-btn' onClick={_=> props.deleteItem(idx)}>&times;</button>
                     <button className='item-btn' onClick={_=> props.moveItemRight(idx)}>&gt;</button>
                   </div>
-              
+                  <div className='font-awesome-container'>
+                    <button className='font-awesome-icon'><FontAwesomeIcon icon={faThumbsUp} color='white' size='2x'/></button>
+                  </div>
               </div>
             )
           })}
