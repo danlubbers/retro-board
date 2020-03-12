@@ -1,7 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faThumbsUp } from '@fortawesome/free-solid-svg-icons'
+import LikeButton from '../../LikeButton/LikeButton';
 
 export default function WentWell(props) {
   console.log({props})
@@ -32,9 +31,8 @@ export default function WentWell(props) {
                     <button className='item-btn' onClick={_=> props.moveItemRight(idx)}>&gt;</button>
                   </div>
 
-                  <div className='font-awesome-container'>
-                    <button className='font-awesome-icon' onClick={props.counter}><FontAwesomeIcon icon={faThumbsUp} color='white' size='2x'/></button>
-                    <p className='counter'>{props.countWentWell}</p>
+                  <div className='font-awesome-container'>                
+                    <LikeButton idx={idx}/>
                   </div>
 
               </div>

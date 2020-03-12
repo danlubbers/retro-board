@@ -1,7 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faThumbsUp } from '@fortawesome/free-solid-svg-icons'
+import LikeButton from '../../LikeButton/LikeButton';
 
 export default function ToImprove(props) {
   return (
@@ -30,8 +29,7 @@ export default function ToImprove(props) {
                   </div>
               
                   <div className='font-awesome-container'>
-                    <button className='font-awesome-icon' onClick={props.counter}><FontAwesomeIcon icon={faThumbsUp} color='white' size='2x'/></button>
-                    <p className='counter'>{props.countToImprove}</p>
+                    <LikeButton idx={idx}/>
                   </div>
 
               </div>
