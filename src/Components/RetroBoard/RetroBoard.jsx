@@ -12,6 +12,7 @@ export default function RetroBoard() {
 
   let [countWentWell, setCountWentWell] = useState(0);
   let [countToImprove, setCountToImprove] = useState(0);
+  let [countActionItem, setCountActionItem] = useState(0);
 
   // New Items
   const newWentWellItem = () => setWentWell([...wentWell, '']);
@@ -84,6 +85,11 @@ export default function RetroBoard() {
     console.log(countToImprove++)
     setCountToImprove(countToImprove++);
   }
+
+  const actionItemCounter = () => {
+    console.log(countActionItem++)
+    setCountActionItem(countActionItem++);
+  }
   
   console.log({wentWell})
   return (
@@ -127,6 +133,9 @@ export default function RetroBoard() {
           deleteItem={deleteActionItem}
           moveItemRight={moveRightActionItem}
           templateName={templateName || 'Action Items'}
+          countActionItem={countActionItem}
+          setCountActionItem={setCountActionItem}
+          counter={actionItemCounter}
         />
   
       </div>
