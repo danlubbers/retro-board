@@ -30,7 +30,7 @@ export default function ActionItems(props) {
                       </div>
 
                       <div className='font-awesome-container'>
-                        <button className='font-awesome-icon'><FontAwesomeIcon icon={faThumbsUp} color='white' size='2x'/></button>
+                        <button className='font-awesome-icon' onClick={props.counter}><FontAwesomeIcon icon={faThumbsUp} color='white' size='2x'/></button>
                         <p className='counter'>{props.countActionItem}</p>
                       </div>
                   
