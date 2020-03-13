@@ -1,6 +1,5 @@
 .template-card {
   width: 100%;
-  // border: 1px solid black;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -46,37 +45,6 @@
       ::placeholder {
         color: $eggshell;
       }
-
-      .font-awesome-container {
-        display: flex;
-        justify-content: flex-end;
-        align-items: center;
-
-        .font-awesome-icon {
-          margin-bottom: 5px;
-          border: none;
-          background-color: transparent;
-        }
-
-        .counter {
-          font-size: 1.5em;
-          margin-right: 5px;
-          color: $eggshell;
-        }
-    }
-    }
-  }
-
-  .delete-arrow-container {
-    margin: 10px 0;
-    padding-bottom: 5px;
-    display: flex;
-    justify-content: space-between;
-
-    .item-btn {
-      background-color: transparent;
-      border: none;
-      color: $eggshell;
     }
   }
 }

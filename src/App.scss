@@ -14,10 +14,10 @@ $eggshell: rgb(250, 250, 250);
 @import './Components/RetroBoard/WentWell/WentWell';
 @import './Components/RetroBoard/ToImprove/ToImprove';
 @import './Components/RetroBoard/ActionItems/ActionItems';
+@import './Components//RetroBoard//LikeButton/LikeButton';
 
 
 .App {
-  // background-color: red;
   text-align: center;
 
   h1, h2, h3, h4, h5 {

@@ -1,0 +1,31 @@
+.font-awesome-container {
+  margin-top: 10px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+
+  .font-awesome-icon {
+    border: none;
+    background-color: transparent;
+  }
+
+  .counter {
+    font-size: 1.5em;
+    margin-right: 5px;
+    color: $eggshell;
+  }
+}
+
+.delete-arrow-container {
+  margin-top: 5px;
+  padding-bottom: 5px;
+  display: flex;
+  justify-content: space-between;
+
+  .item-btn {
+    font-size: 1.2em;
+    background-color: transparent;
+    border: none;
+    color: $eggshell;
+  }
+}
