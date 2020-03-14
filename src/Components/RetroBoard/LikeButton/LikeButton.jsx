@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faThumbsUp, faThumbsDown } from '@fortawesome/free-solid-svg-icons'
 
@@ -18,4 +19,8 @@ export default function LikeButton(props) {
       <p className='counter'>{countDown}</p>
     </>
   )
+}
+
+LikeButton.propTypes = {
+  idx: PropTypes.number.isRequired
 }

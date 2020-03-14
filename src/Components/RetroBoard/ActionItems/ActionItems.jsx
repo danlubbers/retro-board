@@ -28,7 +28,7 @@ export default function ActionItems(props) {
                     </div>
 
                       <div className='delete-arrow-container'>
-                        <button className='item-btn' onClick={_=> props.moveItemleft(idx)}>&lt;</button>
+                        <button className='item-btn' onClick={_=> props.moveItemLeft(idx)}>&lt;</button>
                         <button className='item-btn' onClick={_=> props.deleteItem(idx)}>&times;</button>
                         <button className='item-btn' onClick={_=> props.moveItemRight(idx)}>&gt;</button>
                       </div>
@@ -49,6 +49,8 @@ ActionItems.propTypes = {
   setItem: PropTypes.func.isRequired,
   newItem: PropTypes.func.isRequired,
   updateItem: PropTypes.func.isRequired,
+  moveItemLeft: PropTypes.func.isRequired,
   deleteItem: PropTypes.func.isRequired,
+  moveItemRight: PropTypes.func.isRequired,
   templateName: PropTypes.string.isRequired
 }

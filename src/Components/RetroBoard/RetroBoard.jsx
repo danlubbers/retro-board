@@ -81,7 +81,7 @@ export default function RetroBoard() {
           setItem={setWentWell}
           newItem={newWentWellItem}
           updateItem={updateWentWellItem}
-          moveItemleft={moveLeftWentWell}
+          moveItemLeft={moveLeftWentWell}
           deleteItem={deleteWentWellItem}
           moveItemRight={moveRightWentWell}
           templateName={templateName || 'Went Well'}
@@ -92,7 +92,7 @@ export default function RetroBoard() {
           setItem={setToImprove}
           newItem={newToImproveItem}
           updateItem={updateToImproveItem}
-          moveItemleft={moveLeftToImprove}
+          moveItemLeft={moveLeftToImprove}
           deleteItem={deleteToImproveItem}
           moveItemRight={moveRightToImprove}
           templateName={templateName || 'To Improve'}
@@ -103,7 +103,7 @@ export default function RetroBoard() {
           setItem={setActionItem}
           newItem={newActionItem}
           updateItem={updateActionItem}
-          moveItemleft={moveLeftActionItem}
+          moveItemLeft={moveLeftActionItem}
           deleteItem={deleteActionItem}
           moveItemRight={moveRightActionItem}
           templateName={templateName || 'Action Items'}
