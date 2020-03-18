@@ -1,18 +1,12 @@
-import React, { useState } from 'react'
+import React,  { useContext } from 'react'
 import PropTypes from 'prop-types';
+import { StateContext } from '../../../context/stateContext';
 
 export default function RetroTemplate(props) {
 
-  const [state, setState] = useState(
-    {
-      wentWell: [],
-      toImprove: [],
-      actionItems: []
-    }
-  )
+  const [state, setState] = useContext(StateContext);
 
   // console.log({props})
-  
   
   const newItem = () => {  
       const stateCopy = {...state};
@@ -23,8 +17,8 @@ export default function RetroTemplate(props) {
       }]
       setState(stateCopy);
 
+      console.log(stateCopy)
   }
-  console.log(state)
 
   return (
       <>
@@ -58,16 +52,12 @@ export default function RetroTemplate(props) {
             </div>
           </div>
         </div>
-        </>
-        
-    
-    
+        </> 
   )
 }
 
 RetroTemplate.propTypes = {
-  newItem: PropTypes.func,
-  updateItem: PropTypes.func,
-  deleteItem: PropTypes.func,
+  color: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
   templateName: PropTypes.string.isRequired
 }
