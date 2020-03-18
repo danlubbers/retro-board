@@ -1,14 +1,11 @@
 import React, { useState } from 'react'
-import WentWell from './WentWell/WentWell';
-import ToImprove from './ToImprove/ToImprove';
-import ActionItems from './ActionItems/ActionItems';
+import RetroTemplate from './RetroTemplate/RetroTemplate'
 
 export default function RetroBoard() {
 
   const [wentWell, setWentWell] = useState([''])
   const [toImprove, setToImprove] = useState([''])
   const [actionItem, setActionItem] = useState([''])
-  const [templateName, setTemplateName] = useState('') ;
 
   // New Items
   const newWentWellItem = () => setWentWell([...wentWell, '']);
@@ -70,13 +67,12 @@ export default function RetroBoard() {
     setWentWell([...wentWell, actionItem.filter((item, currentIdx) => currentIdx === idx ? item : null)])
     deleteActionItem(idx);
   } 
-  
-  console.log({wentWell})
+
   return (
     <div className='retroboard-container'>
       <h1 className='retroboard-title'>RETROBOARD</h1>
       <div className='retrotemplate-container'>
-        <WentWell 
+        <RetroTemplate
           item={wentWell}
           setItem={setWentWell}
           newItem={newWentWellItem}
@@ -84,10 +80,11 @@ export default function RetroBoard() {
           moveItemLeft={moveLeftWentWell}
           deleteItem={deleteWentWellItem}
           moveItemRight={moveRightWentWell}
-          templateName={templateName || 'Went Well'}
-
+          title={'Went Well'}
+          templateName={'wentWell'}
         />
-        <ToImprove 
+
+        <RetroTemplate
           item={toImprove}
           setItem={setToImprove}
           newItem={newToImproveItem}
@@ -95,10 +92,11 @@ export default function RetroBoard() {
           moveItemLeft={moveLeftToImprove}
           deleteItem={deleteToImproveItem}
           moveItemRight={moveRightToImprove}
-          templateName={templateName || 'To Improve'}
+          title={'To Improve'}
+          templateName={'toImprove'}
         />
 
-        <ActionItems 
+        <RetroTemplate 
           item={actionItem}
           setItem={setActionItem}
           newItem={newActionItem}
@@ -106,7 +104,8 @@ export default function RetroBoard() {
           moveItemLeft={moveLeftActionItem}
           deleteItem={deleteActionItem}
           moveItemRight={moveRightActionItem}
-          templateName={templateName || 'Action Items'}
+          title={'Action Items'}
+          templateName={'actionItems'}
         />
   
       </div>

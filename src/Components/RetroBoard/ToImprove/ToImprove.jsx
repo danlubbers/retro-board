@@ -6,7 +6,7 @@ export default function ToImprove(props) {
   return (
     <>
       <div className='template-card'>
-        <h1 className='template-name'>{props.templateName}</h1>
+        <h1 className='template-name'>{props.title}</h1>
           <div className='toimprove-template-container'>
             
           <button className='add-item' onClick={props.newItem}>&#43;</button>

@@ -4,11 +4,12 @@ import LikeButton from '../LikeButton/LikeButton';
 
 export default function WentWell(props) {
   console.log({props})
+  console.log(props.templateName)
   
   return (
     <>
       <div className='template-card'>
-        <h1 className='template-name'>{props.templateName}</h1>
+        <h1 className='template-name'>{props.title}</h1>
         <div className='wentwell-template-container'>
           
         <button className='add-item' onClick={props.newItem}>&#43;</button>

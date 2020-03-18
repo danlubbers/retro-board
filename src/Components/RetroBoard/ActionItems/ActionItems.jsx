@@ -6,7 +6,7 @@ export default function ActionItems(props) {
   return (
     <>
       <div className='template-card'>
-        <h1 className='template-name'>{props.templateName}</h1>
+        <h1 className='template-name'>{props.title}</h1>
           <div className='actionitems-template-container'>
 
           <button className='add-item' onClick={props.newItem}>&#43;</button>
