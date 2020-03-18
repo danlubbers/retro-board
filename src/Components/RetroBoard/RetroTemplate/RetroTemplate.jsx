@@ -8,6 +8,7 @@ export default function RetroTemplate(props) {
 
   // console.log({props})
   
+  // New Items
   const newItem = () => {  
       const stateCopy = {...state};
       stateCopy[props.templateName] = [...stateCopy[props.templateName], {
@@ -20,6 +21,17 @@ export default function RetroTemplate(props) {
       console.log(stateCopy)
   }
 
+  // Update Item List
+  const updateItem = (userInput, idx) => {
+    console.log(userInput, idx)
+    const stateCopy = {...state};
+    stateCopy[props.templateName][idx] = [...stateCopy[props.templateName],  {
+      text: userInput
+    }]
+    setState(stateCopy)
+    console.log(stateCopy)
+  }
+
   return (
       <>
         <div className='template-card'>
@@ -28,16 +40,16 @@ export default function RetroTemplate(props) {
             
           <button className='add-item' onClick={newItem}>&#43;</button>
 
-            <div className='item-container' style={{backgroundColor: props.color}}>
+            <div className='item-container' >
               {Object.values(state[props.templateName]).map((item, idx) => {
                 return (
-                  <div key={`List ul - ${idx}`} className='individual-items'>
+                  <div key={`List ul - ${idx}`} className='individual-items' style={{backgroundColor: props.color}}>
                     <input 
                       type='text'
                       value={item.text}
                       placeholder='Type a task...'
                       aria-label='Type a task...'
-                      onChange={e => props.updateItem(e.target.value, idx)}  
+                      onChange={e => updateItem(e.target.value, idx)}  
                     />
                     <h1>{item.text}</h1>
                       <div className='delete-arrow-container'>
