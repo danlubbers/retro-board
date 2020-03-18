@@ -8,9 +8,9 @@ export default function RetroBoard() {
   const [actionItem, setActionItem] = useState([''])
 
   // New Items
-  const newWentWellItem = () => setWentWell([...wentWell, '']);
-  const newToImproveItem = () => setToImprove([...toImprove, ''])
-  const newActionItem = () => setActionItem([...actionItem, ''])    
+  // const newWentWellItem = () => setWentWell([...wentWell, '']);
+  // const newToImproveItem = () => setToImprove([...toImprove, ''])
+  // const newActionItem = () => setActionItem([...actionItem, ''])    
 
   // Update Item List
   const updateWentWellItem = (userInput, idx) => {
@@ -73,37 +73,19 @@ export default function RetroBoard() {
       <h1 className='retroboard-title'>RETROBOARD</h1>
       <div className='retrotemplate-container'>
         <RetroTemplate
-          item={wentWell}
-          setItem={setWentWell}
-          newItem={newWentWellItem}
-          updateItem={updateWentWellItem}
-          moveItemLeft={moveLeftWentWell}
-          deleteItem={deleteWentWellItem}
-          moveItemRight={moveRightWentWell}
           title={'Went Well'}
           templateName={'wentWell'}
+          color={'#009588'}
         />
 
         <RetroTemplate
-          item={toImprove}
-          setItem={setToImprove}
-          newItem={newToImproveItem}
-          updateItem={updateToImproveItem}
-          moveItemLeft={moveLeftToImprove}
-          deleteItem={deleteToImproveItem}
-          moveItemRight={moveRightToImprove}
+          color={'#E91D63'}
           title={'To Improve'}
           templateName={'toImprove'}
-        />
+          />
 
         <RetroTemplate 
-          item={actionItem}
-          setItem={setActionItem}
-          newItem={newActionItem}
-          updateItem={updateActionItem}
-          moveItemLeft={moveLeftActionItem}
-          deleteItem={deleteActionItem}
-          moveItemRight={moveRightActionItem}
+          color={'#9C29B0'}
           title={'Action Items'}
           templateName={'actionItems'}
         />

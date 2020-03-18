@@ -8,44 +8,44 @@ export default function RetroTemplate(props) {
       wentWell: [],
       toImprove: [],
       actionItems: []
-  },
+    }
   )
 
   // console.log({props})
   
-  const stateCopy = {...state}
-  console.log(state.wentWell)
   
-  const newItem = () => {
-    console.log('wentWell' === props.templateName)
-    setState({...stateCopy.wentWell}, 
-        {
-          text: 'Test',
-          thumbsUp: 5,
-          thumbsDown: 0
-        }
-      );
-    }
+  const newItem = () => {  
+      const stateCopy = {...state};
+      stateCopy[props.templateName] = [...stateCopy[props.templateName], {
+        text: '', 
+        thumbsUp: 0,
+        thumbsDown: 0
+      }]
+      setState(stateCopy);
+
+  }
+  console.log(state)
 
   return (
       <>
         <div className='template-card'>
           <h1 className='template-name'>{props.title}</h1>
-          <div className='wentwell-template-container'>
+          <div className='template-container'>
             
           <button className='add-item' onClick={newItem}>&#43;</button>
 
-            <div className='item-container'>
-              {props.item.map((item, idx) => {
+            <div className='item-container' style={{backgroundColor: props.color}}>
+              {Object.values(state[props.templateName]).map((item, idx) => {
                 return (
                   <div key={`List ul - ${idx}`} className='individual-items'>
                     <input 
                       type='text'
-                      value={item}
+                      value={item.text}
                       placeholder='Type a task...'
                       aria-label='Type a task...'
                       onChange={e => props.updateItem(e.target.value, idx)}  
                     />
+                    <h1>{item.text}</h1>
                       <div className='delete-arrow-container'>
                         <button className='item-btn'>&lt;</button>
                         <button className='item-btn' onClick={_=> props.deleteItem(idx)}>&times;</button>
@@ -66,8 +66,6 @@ export default function RetroTemplate(props) {
 }
 
 RetroTemplate.propTypes = {
-  item: PropTypes.array.isRequired,
-  setItem: PropTypes.func.isRequired,
   newItem: PropTypes.func,
   updateItem: PropTypes.func,
   deleteItem: PropTypes.func,
