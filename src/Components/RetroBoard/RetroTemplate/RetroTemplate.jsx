@@ -5,10 +5,9 @@ import { StateContext } from '../../../context/stateContext';
 export default function RetroTemplate(props) {
 
   const [state, setState] = useContext(StateContext);
-  const [sentence, setSentence] = useState(state.text);
+  console.log(state)
   // console.log({props})
   
-  // New Items
   const newItem = () => {  
       const stateCopy = {...state};
       const id = stateCopy[props.templateName].length;
@@ -33,7 +32,7 @@ export default function RetroTemplate(props) {
       console.log('id:', item.id)
       console.log('idx:', idx)
       
-        item.text = sentence
+        
         // : item = itemCopy;
     });
     setState(stateCopy);
@@ -49,19 +48,18 @@ export default function RetroTemplate(props) {
             
           <button className='add-item' onClick={newItem}>&#43;</button>
 
-            <div className='item-container' >
+            <div className='item-container' style={{backgroundColor: props.color}}>
               {Object.values(state[props.templateName]).map((item, idx) => {
                 return (
-                  <div key={`List ul - ${idx}`} className='individual-items' style={{backgroundColor: props.color}}>
+                  <div key={`List ul - ${idx}`} className='individual-items'>
                     <input 
                       type='text'
                       value={item.text}
                       placeholder='Type a task...'
                       aria-label='Type a task...'
-                      onChange={e => setSentence(e.target.value)}  
+                     onChange={e => updateItem(idx)}  
                     />
-                    <button onClick={_=> updateItem(idx)}>ADD</button>
-                    <h1>{item.text}</h1>
+              
                       <div className='delete-arrow-container'>
                         <button className='item-btn'>&lt;</button>
                         <button className='item-btn'>&times;</button>

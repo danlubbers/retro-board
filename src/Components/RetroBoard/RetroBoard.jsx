@@ -79,7 +79,7 @@ export default function RetroBoard() {
             templateName={'wentWell'}
           />
 
-          <RetroTemplate
+          {/* <RetroTemplate
             color={'#E91D63'}
             title={'To Improve'}
             templateName={'toImprove'}
@@ -89,7 +89,7 @@ export default function RetroBoard() {
             color={'#9C29B0'}
             title={'Action Items'}
             templateName={'actionItems'}
-          />
+          /> */}
     
         </div>
       </div>
