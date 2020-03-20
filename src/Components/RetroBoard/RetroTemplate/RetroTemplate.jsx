@@ -1,36 +1,45 @@
-import React,  { useContext } from 'react'
+import React,  { useState, useContext } from 'react'
 import PropTypes from 'prop-types';
 import { StateContext } from '../../../context/stateContext';
 
 export default function RetroTemplate(props) {
 
   const [state, setState] = useContext(StateContext);
-
+  const [sentence, setSentence] = useState(state.text);
   // console.log({props})
   
   // New Items
   const newItem = () => {  
       const stateCopy = {...state};
+      const id = stateCopy[props.templateName].length;
       stateCopy[props.templateName] = [...stateCopy[props.templateName], {
+        id: id,
         text: '', 
         thumbsUp: 0,
         thumbsDown: 0
       }]
       setState(stateCopy);
 
-      console.log(stateCopy)
+      console.log(stateCopy) 
   }
 
+
   // Update Item List
-  const updateItem = (userInput, idx) => {
-    console.log(userInput, idx)
+  const updateItem = (idx) => {
     const stateCopy = {...state};
-    stateCopy[props.templateName][idx] = [...stateCopy[props.templateName],  {
-      text: userInput
-    }]
-    setState(stateCopy)
-    console.log(stateCopy)
+    console.log('this one', stateCopy)
+    stateCopy[props.templateName].forEach((item)=>{
+      const itemCopy = {...item};
+      console.log('id:', item.id)
+      console.log('idx:', idx)
+      
+        item.text = sentence
+        // : item = itemCopy;
+    });
+    setState(stateCopy);
+    
   }
+
 
   return (
       <>
@@ -49,12 +58,13 @@ export default function RetroTemplate(props) {
                       value={item.text}
                       placeholder='Type a task...'
                       aria-label='Type a task...'
-                      onChange={e => updateItem(e.target.value, idx)}  
+                      onChange={e => setSentence(e.target.value)}  
                     />
+                    <button onClick={_=> updateItem(idx)}>ADD</button>
                     <h1>{item.text}</h1>
                       <div className='delete-arrow-container'>
                         <button className='item-btn'>&lt;</button>
-                        <button className='item-btn' onClick={_=> props.deleteItem(idx)}>&times;</button>
+                        <button className='item-btn'>&times;</button>
                         <button className='item-btn'>&gt;</button>
                       </div>
                   

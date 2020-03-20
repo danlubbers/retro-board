@@ -12,12 +12,12 @@ export default function ToImprove(props) {
           <button className='add-item' onClick={props.newItem}>&#43;</button>
 
           <div className='item-container'>
-            {props.item.map((item, idx) => {
+            {Object.values(props.item).map((item, idx) => {
                 return (
                   <div key={`List ul - ${idx}`} className='individual-items individual-to-improve'>
                     <input 
                       type='text'
-                      value={item}
+                      value={item.text}
                       placeholder='Type a task...'
                       aria-label='Type a task...'
                       onChange={e => props.updateItem(e.target.value, idx)}  
