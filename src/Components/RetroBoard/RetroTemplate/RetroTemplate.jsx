@@ -5,7 +5,6 @@ import { StateContext } from '../../../context/stateContext';
 export default function RetroTemplate(props) {
 
   const [state, setState] = useContext(StateContext);
-  console.log(state)
   // console.log({props})
   
   const newItem = () => {  
@@ -18,25 +17,20 @@ export default function RetroTemplate(props) {
         thumbsDown: 0
       }]
       setState(stateCopy);
-
-      console.log(stateCopy) 
-  }
-
+    }
+    console.log(state)
 
   // Update Item List
-  const updateItem = (idx) => {
+  const updateText = (textValue) => {
     const stateCopy = {...state};
-    console.log('this one', stateCopy)
-    stateCopy[props.templateName].forEach((item)=>{
-      const itemCopy = {...item};
-      console.log('id:', item.id)
-      console.log('idx:', idx)
-      
-        
-        // : item = itemCopy;
-    });
-    setState(stateCopy);
+    console.log(textValue);
+    // console.log({stateCopy})
+    // console.log(stateCopy[props.templateName])
+    stateCopy[props.templateName] = [...stateCopy[props.templateName], {
+      text: textValue
+    }]
     
+    setState(stateCopy);
   }
 
 
@@ -57,7 +51,7 @@ export default function RetroTemplate(props) {
                       value={item.text}
                       placeholder='Type a task...'
                       aria-label='Type a task...'
-                     onChange={e => updateItem(idx)}  
+                     onChange={e => updateText(e.target.value)}  
                     />
               
                       <div className='delete-arrow-container'>
