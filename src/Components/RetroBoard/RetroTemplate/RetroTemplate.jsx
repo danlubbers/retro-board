@@ -5,6 +5,7 @@ import { StateContext } from '../../../context/stateContext';
 export default function RetroTemplate(props) {
 
   const [state, setState] = useContext(StateContext);
+  const [text, setText] = useState('');
   // console.log({props})
   
   const newItem = () => {  
@@ -17,20 +18,17 @@ export default function RetroTemplate(props) {
         thumbsDown: 0
       }]
       setState(stateCopy);
+      // console.log(state)
     }
-    console.log(state)
 
-  // Update Item List
-  const updateText = (textValue) => {
+  const updateText = (idx) => {
     const stateCopy = {...state};
-    console.log(textValue);
-    // console.log({stateCopy})
-    // console.log(stateCopy[props.templateName])
-    stateCopy[props.templateName] = [...stateCopy[props.templateName], {
-      text: textValue
-    }]
-    
-    setState(stateCopy);
+    stateCopy[props.templateName].forEach(stateItems => {
+      const item = {...stateItems};
+      item.id === idx ? stateItems.text = text : stateItems.text = item.text;
+    })
+    setState(stateCopy)
+    // console.log(stateCopy)
   }
 
 
@@ -42,18 +40,20 @@ export default function RetroTemplate(props) {
             
           <button className='add-item' onClick={newItem}>&#43;</button>
 
-            <div className='item-container' style={{backgroundColor: props.color}}>
+            <div className='item-container'>
               {Object.values(state[props.templateName]).map((item, idx) => {
                 return (
-                  <div key={`List ul - ${idx}`} className='individual-items'>
-                    <input 
-                      type='text'
-                      value={item.text}
-                      placeholder='Type a task...'
-                      aria-label='Type a task...'
-                     onChange={e => updateText(e.target.value)}  
-                    />
-              
+                  <div key={`List ul - ${idx}`} className='individual-items' style={{backgroundColor: props.color}}>
+                    <div className='input-container'>
+                      <input 
+                        type='text'
+                        value={state.text}
+                        placeholder='Type a task...'
+                        aria-label='Type a task...'
+                      onChange={e => setText(e.target.value)}  
+                      />
+                      <button onClick={_=> updateText(idx)}>ADD</button>
+                    </div>
                       <div className='delete-arrow-container'>
                         <button className='item-btn'>&lt;</button>
                         <button className='item-btn'>&times;</button>
