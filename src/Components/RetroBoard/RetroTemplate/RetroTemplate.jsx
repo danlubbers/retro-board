@@ -6,11 +6,13 @@ export default function RetroTemplate(props) {
 
   const [state, setState] = useContext(StateContext);
   const [text, setText] = useState('');
+  // const [arrIndex, setArrIndex] = useState(0);
   // console.log({props})
   
   const newItem = () => {  
       const stateCopy = {...state};
       const id = stateCopy[props.templateName].length;
+      // console.log(id)
       stateCopy[props.templateName] = [...stateCopy[props.templateName], {
         id: id,
         text: '', 
@@ -23,13 +25,28 @@ export default function RetroTemplate(props) {
 
   const updateText = (idx) => {
     const stateCopy = {...state};
-    stateCopy[props.templateName].forEach(stateItems => {
-      const item = {...stateItems};
-      item.id === idx ? stateItems.text = text : stateItems.text = item.text;
+    stateCopy[props.templateName].forEach(stateItem => {
+      const item = {...stateItem};
+      item.id === idx ? stateItem.text = text : stateItem.text = item.text;
     })
     setState(stateCopy)
-    // console.log(stateCopy)
+    console.log(state)
   }
+
+  const deleteItem = () => {
+    const stateCopy = {...state};
+    const deleteItem = stateCopy[props.templateName].filter((stateItem, i) => {
+      // const item = {...stateItem};
+      console.log('current I ', i)
+      console.log('delete me', stateItem)
+      // console.log(stateCopy[props.templateName])
+      return stateItem.id !== i;
+    })
+    stateCopy[props.templateName] = deleteItem;
+    console.log(stateCopy)
+    setState(stateCopy)
+  }
+  // console.log(state)
 
 
   return (
@@ -42,6 +59,7 @@ export default function RetroTemplate(props) {
 
             <div className='item-container'>
               {Object.values(state[props.templateName]).map((item, idx) => {
+                // console.log(item.text)
                 return (
                   <div key={`List ul - ${idx}`} className='individual-items' style={{backgroundColor: props.color}}>
                     <div className='input-container'>
@@ -50,13 +68,13 @@ export default function RetroTemplate(props) {
                         value={state.text}
                         placeholder='Type a task...'
                         aria-label='Type a task...'
-                      onChange={e => setText(e.target.value)}  
+                        onChange={e => setText(e.target.value)}  
                       />
                       <button onClick={_=> updateText(idx)}>ADD</button>
                     </div>
                       <div className='delete-arrow-container'>
                         <button className='item-btn'>&lt;</button>
-                        <button className='item-btn'>&times;</button>
+                        <button className='item-btn' onClick={_=> deleteItem(idx)}>&times;</button>
                         <button className='item-btn'>&gt;</button>
                       </div>
                   
