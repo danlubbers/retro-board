@@ -33,14 +33,14 @@ export default function RetroTemplate(props) {
     console.log(state)
   }
 
-  const deleteItem = () => {
+  const deleteItem = (idx) => {
     const stateCopy = {...state};
     const deleteItem = stateCopy[props.templateName].filter((stateItem, i) => {
       // const item = {...stateItem};
-      console.log('current I ', i)
-      console.log('delete me', stateItem)
+      console.log('Idx ', idx)
+      console.log('delete me', i)
       // console.log(stateCopy[props.templateName])
-      return stateItem.id !== i;
+      return i !== idx;
     })
     stateCopy[props.templateName] = deleteItem;
     console.log(stateCopy)
@@ -59,19 +59,20 @@ export default function RetroTemplate(props) {
 
             <div className='item-container'>
               {Object.values(state[props.templateName]).map((item, idx) => {
-                // console.log(item.text)
                 return (
                   <div key={`List ul - ${idx}`} className='individual-items' style={{backgroundColor: props.color}}>
                     <div className='input-container'>
                       <input 
+                        key={`Input ${idx}`}
                         type='text'
-                        value={state.text}
+                        value={item[text]}
                         placeholder='Type a task...'
                         aria-label='Type a task...'
                         onChange={e => setText(e.target.value)}  
                       />
                       <button onClick={_=> updateText(idx)}>ADD</button>
                     </div>
+                    <h4>{item.text}</h4>
                       <div className='delete-arrow-container'>
                         <button className='item-btn'>&lt;</button>
                         <button className='item-btn' onClick={_=> deleteItem(idx)}>&times;</button>
