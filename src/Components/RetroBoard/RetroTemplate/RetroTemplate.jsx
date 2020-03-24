@@ -1,6 +1,7 @@
 import React,  { useState, useContext } from 'react'
 import PropTypes from 'prop-types';
 import { StateContext } from '../../../context/stateContext';
+// import LikeButton from '../LikeButton/LikeButton';
 
 export default function RetroTemplate(props) {
 
@@ -20,8 +21,8 @@ export default function RetroTemplate(props) {
         thumbsDown: 0
       }]
       setState(stateCopy);
-      // console.log(state)
     }
+    console.log(state)
 
   const updateText = (idx) => {
     const stateCopy = {...state};
@@ -40,7 +41,7 @@ export default function RetroTemplate(props) {
       console.log('Idx ', idx)
       console.log('delete me', i)
       // console.log(stateCopy[props.templateName])
-      return i !== idx;
+      return stateItem.id !== idx;
     })
     stateCopy[props.templateName] = deleteItem;
     console.log(stateCopy)
@@ -61,18 +62,25 @@ export default function RetroTemplate(props) {
               {Object.values(state[props.templateName]).map((item, idx) => {
                 return (
                   <div key={`List ul - ${idx}`} className='individual-items' style={{backgroundColor: props.color}}>
-                    <div className='input-container'>
-                      <input 
-                        key={`Input ${idx}`}
-                        type='text'
-                        value={item[text]}
-                        placeholder='Type a task...'
-                        aria-label='Type a task...'
-                        onChange={e => setText(e.target.value)}  
-                      />
-                      <button onClick={_=> updateText(idx)}>ADD</button>
-                    </div>
-                    <h4>{item.text}</h4>
+                    {item.text === '' 
+                      ? <div className='input-container'>                  
+                          <input 
+                          key={`Input ${idx}`}
+                          type='text'
+                          value={item[text]}
+                          placeholder='Type a task...'
+                          aria-label='Type a task...'
+                          onChange={e => setText(e.target.value)}  
+                        />
+                        <button onClick={_=> updateText(idx)}>ADD</button>
+                        </div>
+                      : <h4>{item.text}</h4>
+                    }
+
+                     {/* <div className='font-awesome-container'>
+                      <LikeButton idx={idx} templateName={props.templateName}/>
+                    </div> */}
+
                       <div className='delete-arrow-container'>
                         <button className='item-btn'>&lt;</button>
                         <button className='item-btn' onClick={_=> deleteItem(idx)}>&times;</button>
