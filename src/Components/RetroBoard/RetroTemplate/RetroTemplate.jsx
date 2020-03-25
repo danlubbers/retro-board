@@ -7,20 +7,23 @@ export default function RetroTemplate(props) {
 
   const [state, setState] = useContext(StateContext);
   const [text, setText] = useState('');
-  // const [arrIndex, setArrIndex] = useState(0);
+  // let [arrIndex, setArrIndex] = useState(0);
   // console.log({props})
   
   const newItem = () => {  
       const stateCopy = {...state};
-      const id = stateCopy[props.templateName].length;
-      // console.log(id)
-      stateCopy[props.templateName] = [...stateCopy[props.templateName], {
+      const id = stateCopy[props.templateName].length > 0
+      ? parseInt(stateCopy[props.templateName][stateCopy[props.templateName].length - 1].id) + 1 : 0;
+      stateCopy[props.templateName] = [...stateCopy[props.templateName], 
+      {
         id: id,
         text: '', 
         thumbsUp: 0,
         thumbsDown: 0
       }]
       setState(stateCopy);
+      // setArrIndex(arrIndex + 1)
+      console.log(stateCopy[props.templateName].id)
     }
     console.log(state)
 
@@ -38,8 +41,8 @@ export default function RetroTemplate(props) {
     const stateCopy = {...state};
     const deleteItem = stateCopy[props.templateName].filter((stateItem, i) => {
       // const item = {...stateItem};
-      console.log('Idx ', idx)
-      console.log('delete me', i)
+      // console.log('Idx ', idx)
+      // console.log('delete me', i)
       // console.log(stateCopy[props.templateName])
       return stateItem.id !== idx;
     })
