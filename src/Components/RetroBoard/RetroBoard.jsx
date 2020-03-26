@@ -1,16 +1,28 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import RetroTemplate from './RetroTemplate/RetroTemplate';
+import { StateContext } from '../../context/stateContext';
 
-export default function RetroBoard() {
+export default function RetroBoard(props) {
 
-  // const [wentWell, setWentWell] = useState([''])
-  // const [toImprove, setToImprove] = useState([''])
-  // const [actionItem, setActionItem] = useState([''])
+const [state, setState] = useContext(StateContext);
 
-  // New Items
-  // const newWentWellItem = () => setWentWell([...wentWell, '']);
-  // const newToImproveItem = () => setToImprove([...toImprove, ''])
-  // const newActionItem = () => setActionItem([...actionItem, ''])    
+const newItem = () => {  
+    const stateCopy = {...state};
+    const id = stateCopy[props.templateName].length > 0
+    ? parseInt(stateCopy[props.templateName][stateCopy[props.templateName].length - 1].id) + 1 : 0;
+    stateCopy[props.templateName] = [...stateCopy[props.templateName], 
+    {
+      id: id,
+      text: '', 
+      thumbsUp: 0,
+      thumbsDown: 0
+    }]
+    setState(stateCopy);
+    // setArrIndex(arrIndex + 1)
+    console.log(stateCopy[props.templateName].id)
+  }
+  // console.log(state)
+
 
   // Update Item List
   // const updateWentWellItem = (userInput, idx) => {
@@ -68,32 +80,34 @@ export default function RetroBoard() {
   //   deleteActionItem(idx);
   // } 
 
-  return (
-    
-      <div className='retroboard-container'>
-        <h1 className='retroboard-title'>RETROBOARD</h1>
-        <div className='retrotemplate-container'>
-          <RetroTemplate
-            color={'#009588'}
-            title={'Went Well'}
-            templateName={'wentWell'}
-          />
+  return (    
+      <>
+        <div className='template-card'>
+          <h1 className='template-name'>{props.title}</h1>
+          <div className='template-container'>
 
-          {/* <RetroTemplate
-            color={'#E91D63'}
-            title={'To Improve'}
-            templateName={'toImprove'}
-            />
+            <button className='add-item' onClick={newItem}>&#43;</button>
 
-          <RetroTemplate 
-            color={'#9C29B0'}
-            title={'Action Items'}
-            templateName={'actionItems'}
-          /> */}
-    
-        </div>
-      </div>
-  
+          {state[props.templateName].map((item, idx) => {
+
+           return ( 
+             <div className='item-container' key={idx}>
+
+              <RetroTemplate
+                color={props.color}
+                title={props.title}
+                templateName={props.templateName}
+                key={idx}
+                item={item}
+              /> 
+              
+              </div>  
+           )
+          })
+        }
+          </div>
+        </div>         
+      </>  
   )
 }
 

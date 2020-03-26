@@ -4,80 +4,57 @@ import { StateContext } from '../../../context/stateContext';
 // import LikeButton from '../LikeButton/LikeButton';
 
 export default function RetroTemplate(props) {
-
+// console.log(props)
   const [state, setState] = useContext(StateContext);
-  const [text, setText] = useState('');
+  const [text, setText] = useState(props.item.text);
+  const [showText, setShowText] = useState(false);
   // let [arrIndex, setArrIndex] = useState(0);
   // console.log({props})
-  
-  const newItem = () => {  
-      const stateCopy = {...state};
-      const id = stateCopy[props.templateName].length > 0
-      ? parseInt(stateCopy[props.templateName][stateCopy[props.templateName].length - 1].id) + 1 : 0;
-      stateCopy[props.templateName] = [...stateCopy[props.templateName], 
-      {
-        id: id,
-        text: '', 
-        thumbsUp: 0,
-        thumbsDown: 0
-      }]
-      setState(stateCopy);
-      // setArrIndex(arrIndex + 1)
-      console.log(stateCopy[props.templateName].id)
-    }
-    console.log(state)
 
-  const updateText = (idx) => {
+  const updateText = () => {
     const stateCopy = {...state};
     stateCopy[props.templateName].forEach(stateItem => {
       const item = {...stateItem};
-      item.id === idx ? stateItem.text = text : stateItem.text = item.text;
+      item.id === props.item.id ? stateItem.text = text : stateItem = item;
     })
     setState(stateCopy)
-    console.log(state)
+    setShowText(true)
   }
 
-  const deleteItem = (idx) => {
+  const deleteItem = () => {
     const stateCopy = {...state};
     const deleteItem = stateCopy[props.templateName].filter((stateItem, i) => {
       // const item = {...stateItem};
       // console.log('Idx ', idx)
       // console.log('delete me', i)
       // console.log(stateCopy[props.templateName])
-      return stateItem.id !== idx;
+      return stateItem.id !== props.item.id;
     })
     stateCopy[props.templateName] = deleteItem;
-    console.log(stateCopy)
+    // console.log(stateCopy)
     setState(stateCopy)
   }
-  // console.log(state)
+  console.log(state)
 
 
   return (
-      <>
-        <div className='template-card'>
-          <h1 className='template-name'>{props.title}</h1>
-          <div className='template-container'>
-            
-          <button className='add-item' onClick={newItem}>&#43;</button>
-
+      <>               
             <div className='item-container'>
-              {Object.values(state[props.templateName]).map((item, idx) => {
-                return (
-                  <div key={`List ul - ${idx}`} className='individual-items' style={{backgroundColor: props.color}}>
-                    {item.text === '' 
+             
+                  <div key={`List ul - ${props.idx}`} className='individual-items' style={{backgroundColor: props.color}}>
+                    {!showText 
                       ? <div className='input-container'>                  
                           <input 
-                          key={`Input ${idx}`}
+                          key={`Input ${props.idx}`}
                           type='text'
-                          value={item[text]}
+                          value={text}
                           placeholder='Type a task...'
                           aria-label='Type a task...'
                           onChange={e => setText(e.target.value)}  
                         />
-                        <button onClick={_=> updateText(idx)}>ADD</button>
+                        <button onClick={updateText}>ADD</button>
                         </div>
-                      : <h4>{item.text}</h4>
+                      : <h4>{text}</h4>
                     }
 
                      {/* <div className='font-awesome-container'>
@@ -86,16 +63,15 @@ export default function RetroTemplate(props) {
 
                       <div className='delete-arrow-container'>
                         <button className='item-btn'>&lt;</button>
-                        <button className='item-btn' onClick={_=> deleteItem(idx)}>&times;</button>
+                        <button className='item-btn' 
+                        onClick={deleteItem}
+                        >&times;</button>
                         <button className='item-btn'>&gt;</button>
                       </div>
                   
                   </div>
-                )
-              })}
+               
             </div>
-          </div>
-        </div>
         </> 
   )
 }
