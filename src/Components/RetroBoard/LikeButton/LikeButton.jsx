@@ -20,7 +20,7 @@ export default function LikeButton(props) {
   const counterDown = () => {
     const stateCopy = {...state};
     stateCopy[props.templateName].map(item => {
-     return item.id === props.idx && ++item.thumbsDown
+     return item.id === props.idx && --item.thumbsDown
     });
     setState(stateCopy)
   }
