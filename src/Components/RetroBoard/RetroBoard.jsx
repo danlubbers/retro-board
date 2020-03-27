@@ -1,4 +1,5 @@
-import React, { useContext } from 'react'
+import React, { useContext } from 'react';
+import PropTypes from 'prop-types';
 import RetroTemplate from './RetroTemplate/RetroTemplate';
 import { StateContext } from '../../context/stateContext';
 
@@ -18,30 +19,11 @@ const newItem = () => {
       thumbsDown: 0
     }]
     setState(stateCopy);
-    // setArrIndex(arrIndex + 1)
+
     console.log(stateCopy[props.templateName].id)
   }
   // console.log(state)
 
-
-  // Update Item List
-  // const updateWentWellItem = (userInput, idx) => {
-  //     const newWentWellItems = [...wentWell];
-  //     newWentWellItems[idx] = userInput;
-  //     setWentWell(newWentWellItems);
-  // }
-
-  // const updateToImproveItem = (userInput, idx) => {
-  //     const newToImproveItems = [...toImprove];
-  //     newToImproveItems[idx] = userInput;
-  //     setToImprove(newToImproveItems);
-  // }
-
-  // const updateActionItem = (userInput, idx) => {
-  //     const newActionItems = [...actionItem];
-  //     newActionItems[idx] = userInput;
-  //     setActionItem(newActionItems);
-  // }
 
   // // Move Item to the Left 
   // const moveLeftWentWell = idx => {
@@ -59,12 +41,6 @@ const newItem = () => {
   //   deleteActionItem(idx);
   // } 
 
-  // // Delete Item 
-  // const deleteWentWellItem = idx => setWentWell(wentWell.filter((item, currentIdx) => currentIdx !== idx));
-
-  // const deleteToImproveItem = idx => setToImprove(toImprove.filter((item, currentIdx) => currentIdx !== idx));
-
-  // const deleteActionItem = idx => setActionItem(actionItem.filter((item, currentIdx) => currentIdx !== idx));
 
   // // Move Item to the Right
   // const moveRightWentWell = idx => {
@@ -97,7 +73,7 @@ const newItem = () => {
                 color={props.color}
                 title={props.title}
                 templateName={props.templateName}
-                key={idx}
+                idx={idx}
                 item={item}
               /> 
               
@@ -109,6 +85,12 @@ const newItem = () => {
         </div>         
       </>  
   )
+}
+
+RetroBoard.propTypes = {
+  color: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
+  templateName: PropTypes.string.isRequired
 }
 
 

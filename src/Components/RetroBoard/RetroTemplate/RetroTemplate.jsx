@@ -1,15 +1,13 @@
-import React,  { useState, useContext } from 'react'
+import React,  { useState, useContext } from 'react';
 import PropTypes from 'prop-types';
 import { StateContext } from '../../../context/stateContext';
 // import LikeButton from '../LikeButton/LikeButton';
 
 export default function RetroTemplate(props) {
-// console.log(props)
+console.log({props})
   const [state, setState] = useContext(StateContext);
   const [text, setText] = useState(props.item.text);
   const [showText, setShowText] = useState(false);
-  // let [arrIndex, setArrIndex] = useState(0);
-  // console.log({props})
 
   const updateText = () => {
     const stateCopy = {...state};
@@ -23,15 +21,8 @@ export default function RetroTemplate(props) {
 
   const deleteItem = () => {
     const stateCopy = {...state};
-    const deleteItem = stateCopy[props.templateName].filter((stateItem, i) => {
-      // const item = {...stateItem};
-      // console.log('Idx ', idx)
-      // console.log('delete me', i)
-      // console.log(stateCopy[props.templateName])
-      return stateItem.id !== props.item.id;
-    })
+    const deleteItem = stateCopy[props.templateName].filter(stateItem => stateItem.id !== props.item.id);
     stateCopy[props.templateName] = deleteItem;
-    // console.log(stateCopy)
     setState(stateCopy)
   }
   console.log(state)
@@ -54,7 +45,7 @@ export default function RetroTemplate(props) {
                         />
                         <button onClick={updateText}>ADD</button>
                         </div>
-                      : <h4>{text}</h4>
+                      : <h4>{props.item.text}</h4>
                     }
 
                      {/* <div className='font-awesome-container'>
@@ -79,5 +70,7 @@ export default function RetroTemplate(props) {
 RetroTemplate.propTypes = {
   color: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
-  templateName: PropTypes.string.isRequired
+  templateName: PropTypes.string.isRequired,
+  idx: PropTypes.number.isRequired,
+  item: PropTypes.object.isRequired
 }
