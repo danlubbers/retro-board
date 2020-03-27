@@ -66,21 +66,20 @@ const newItem = () => {
 
           {state[props.templateName].map((item, idx) => {
 
-           return ( 
-             <div className='item-container' key={idx}>
+            return ( 
+              <div className='item-container' key={idx}>
 
-              <RetroTemplate
-                color={props.color}
-                title={props.title}
-                templateName={props.templateName}
-                idx={idx}
-                item={item}
-              /> 
-              
+                <RetroTemplate
+                  color={props.color}
+                  title={props.title}
+                  templateName={props.templateName}
+                  idx={idx}
+                  item={item}
+                /> 
+                
               </div>  
-           )
-          })
-        }
+            )
+          })}
           </div>
         </div>         
       </>  

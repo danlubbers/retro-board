@@ -1,7 +1,7 @@
 import React,  { useState, useContext } from 'react';
 import PropTypes from 'prop-types';
 import { StateContext } from '../../../context/stateContext';
-// import LikeButton from '../LikeButton/LikeButton';
+import LikeButton from '../LikeButton/LikeButton';
 
 export default function RetroTemplate(props) {
 console.log({props})
@@ -48,9 +48,9 @@ console.log({props})
                       : <h4>{props.item.text}</h4>
                     }
 
-                     {/* <div className='font-awesome-container'>
-                      <LikeButton idx={idx} templateName={props.templateName}/>
-                    </div> */}
+                     <div className='font-awesome-container'>
+                      <LikeButton idx={props.idx} templateName={props.templateName} item={props.item}/>
+                    </div>
 
                       <div className='delete-arrow-container'>
                         <button className='item-btn'>&lt;</button>
