@@ -31,15 +31,6 @@ const newItem = () => {
   //   deleteWentWellItem(idx);
   // } 
 
-  // const moveLeftToImprove = idx => {
-  //   setWentWell([...wentWell, toImprove.filter((item, currentIdx) => currentIdx === idx ? item : null)])
-  //   deleteToImproveItem(idx);
-  // } 
-
-  // const moveLeftActionItem = idx => {
-  //   setToImprove([...toImprove, actionItem.filter((item, currentIdx) => currentIdx === idx ? item : null)])
-  //   deleteActionItem(idx);
-  // } 
 
 
   // // Move Item to the Right
@@ -47,14 +38,7 @@ const newItem = () => {
   //   setToImprove([...toImprove, wentWell.filter((item, currentIdx) => currentIdx === idx ? item : null)])
   //   deleteWentWellItem(idx);
   // } 
-  // const moveRightToImprove = idx => {
-  //   setActionItem([...actionItem, toImprove.filter((item, currentIdx) => currentIdx === idx ? item : null)])
-  //   deleteToImproveItem(idx);
-  // } 
-  // const moveRightActionItem = idx => {
-  //   setWentWell([...wentWell, actionItem.filter((item, currentIdx) => currentIdx === idx ? item : null)])
-  //   deleteActionItem(idx);
-  // } 
+
 
   return (    
       <>

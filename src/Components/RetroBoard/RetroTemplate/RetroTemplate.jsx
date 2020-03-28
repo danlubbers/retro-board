@@ -28,6 +28,34 @@ console.log({props})
   console.log(state)
 
 
+  const moveItemRight = (idx) => {
+    const stateCopy = {...state};
+
+    let moveIdx = stateCopy[props.templateName][idx];
+    console.log(moveIdx)
+    // const filterTask = stateCopy[props.templateName].filter(stateItem => {
+    //   return stateItem.id === props.item.id
+    // })
+  
+    if(props.templateName === 'wentWell') {
+      stateCopy['wentWell'].splice(moveIdx, 1)
+      stateCopy['toImprove'].push(moveIdx)
+    }
+    
+    if(props.templateName === 'toImprove') {
+      stateCopy['toImprove'].splice(moveIdx, 1)
+      stateCopy['actionItems'].push(moveIdx)  
+    }
+
+    if(props.templateName === 'actionItems') {
+      stateCopy['actionItems'].splice(moveIdx, 1)
+      stateCopy['wentWell'].push(moveIdx)      
+    }
+
+    setState(stateCopy)
+    console.log({state})
+  }
+
   return (
       <>               
             <div className='item-container'>
@@ -57,7 +85,7 @@ console.log({props})
                         <button className='item-btn' 
                         onClick={deleteItem}
                         >&times;</button>
-                        <button className='item-btn'>&gt;</button>
+                        <button className='item-btn' onClick={_=> moveItemRight(props.idx)}>&gt;</button>
                       </div>
                   
                   </div>
