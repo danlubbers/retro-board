@@ -9,30 +9,16 @@ const [state, setState] = useContext(StateContext);
 
 const newItem = () => {  
     const stateCopy = {...state};
-    const id = stateCopy[props.templateName].length > 0
-    ? parseInt(stateCopy[props.templateName][stateCopy[props.templateName].length - 1].id) + 1 : 0;
     stateCopy[props.templateName] = [...stateCopy[props.templateName], 
     {
-      id: id,
       text: '', 
       thumbsUp: 0,
       thumbsDown: 0,
       boardName: props.templateName
     }]
     setState(stateCopy);
-
-    console.log(stateCopy[props.templateName].id)
   }
   // console.log(state)
-
-
-  // // Move Item to the Left 
-  // const moveLeftWentWell = idx => {
-  //   setActionItem([...actionItem, wentWell.filter((item, currentIdx) => currentIdx === idx ? item : null)])
-  //   deleteWentWellItem(idx);
-  // } 
-
-
 
   // // Move Item to the Right
   // const moveRightWentWell = idx => {

@@ -9,27 +9,27 @@ export default function LikeButton(props) {
 
   const [state, setState] = useContext(StateContext);
 
-  const counterUp = () => {
+  const counterUp = idx => {
     const stateCopy = {...state};
-    stateCopy[props.templateName].map(item => {
-     return item.id === props.idx && ++item.thumbsUp
+    stateCopy[props.templateName].map((item, currentIdx) => {
+     return currentIdx === idx && ++item.thumbsUp
     });
     setState(stateCopy)
   }
 
-  const counterDown = () => {
+  const counterDown = idx => {
     const stateCopy = {...state};
-    stateCopy[props.templateName].map(item => {
-     return item.id === props.idx && --item.thumbsDown
+    stateCopy[props.templateName].map((item, currentIdx) => {
+     return currentIdx === idx && --item.thumbsDown
     });
     setState(stateCopy)
   }
   
   return (
     <>
-      <button className='font-awesome-icon' onClick={counterUp} id={props.idx}><FontAwesomeIcon icon={faThumbsUp} color='white' size='2x'/></button>
+      <button className='font-awesome-icon' onClick={_=> counterUp(props.idx)} id={props.idx}><FontAwesomeIcon icon={faThumbsUp} color='white' size='2x'/></button>
       <p className='counter'>{props.item.thumbsUp}</p>
-      <button className='font-awesome-icon' onClick={counterDown} id={props.idx}><FontAwesomeIcon icon={faThumbsDown} color='white' size='2x'/></button>
+      <button className='font-awesome-icon' onClick={_=> counterDown(props.idx)} id={props.idx}><FontAwesomeIcon icon={faThumbsDown} color='white' size='2x'/></button>
       <p className='counter'>{props.item.thumbsDown}</p>
     </>
   )

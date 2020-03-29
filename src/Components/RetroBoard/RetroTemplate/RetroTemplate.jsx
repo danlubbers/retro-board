@@ -9,43 +9,38 @@ export default function RetroTemplate(props) {
   const [text, setText] = useState(props.item.text);
   const [showText, setShowText] = useState(false);
 
-  const updateText = () => {
+  const updateText = idx => {
     const stateCopy = {...state};
-    stateCopy[props.templateName].forEach(stateItem => {
+    stateCopy[props.templateName].forEach((stateItem, currentIdx) => {
       const item = {...stateItem};
-      item.id === props.item.id ? stateItem.text = text : stateItem = item;
+      currentIdx === idx ? stateItem.text = text : stateItem = item;
     })
     setState(stateCopy)
     setShowText(true)
   }
 
-  const deleteItem = () => {
+  const deleteItem = idx => {
     const stateCopy = {...state};
-    const deleteItem = stateCopy[props.templateName].filter(stateItem => stateItem.id !== props.item.id);
+    const deleteItem = stateCopy[props.templateName].filter((stateItem, currentIdx) => currentIdx !== idx);
     stateCopy[props.templateName] = deleteItem;
     setState(stateCopy)
   }
   // console.log(state)
 
 
-  const moveItemRight = (idx) => {
+  const moveItemRight = idx => {
     const stateCopy = {...state};
-
-    const filterTask = stateCopy[props.templateName].filter(stateItem => {
-      return stateItem.id === props.item.id
-    })
+    const filterTask = stateCopy[props.templateName].filter((stateItem, currentIdx) => currentIdx === idx);
   
     console.log({filterTask})
       
     if(filterTask[0].boardName === 'wentWell') {
-      // console.log(stateCopy.toImprove)  
       stateCopy['wentWell'].splice(idx, 1)
       filterTask[0]['boardName'] = 'toImprove';
       stateCopy['toImprove'].push(filterTask[0])
     }
 
-    else if(filterTask[0].boardName === 'toImprove') {
-      // console.log(stateCopy.toImprove)  
+    else if(filterTask[0].boardName === 'toImprove') {      
       stateCopy['toImprove'].splice(idx, 1)
       filterTask[0]['boardName'] = 'actionItems';
       stateCopy['actionItems'].push(filterTask[0])
@@ -57,9 +52,36 @@ export default function RetroTemplate(props) {
       filterTask[0]['boardName'] = 'wentWell';
       stateCopy['wentWell'].push(filterTask[0])
     }
-    
- 
 
+    setState(stateCopy)
+    // setShowText(true)
+    console.log({state})
+  }
+
+  const moveItemLeft = idx => {
+    const stateCopy = {...state};
+    const filterTask = stateCopy[props.templateName].filter((stateItem, currentIdx) => currentIdx === idx);
+  
+    console.log({filterTask})
+      
+    if(filterTask[0].boardName === 'wentWell') {
+      stateCopy['wentWell'].splice(idx, 1)
+      filterTask[0]['boardName'] = 'actionItems';
+      stateCopy['actionItems'].push(filterTask[0])
+    }
+
+    else if(filterTask[0].boardName === 'toImprove') {      
+      stateCopy['toImprove'].splice(idx, 1)
+      filterTask[0]['boardName'] = 'wentWell';
+      stateCopy['wentWell'].push(filterTask[0])
+    }
+
+    else if(filterTask[0].boardName === 'actionItems') {
+      // console.log(stateCopy.toImprove)  
+      stateCopy['actionItems'].splice(idx, 1)
+      filterTask[0]['boardName'] = 'toImprove';
+      stateCopy['toImprove'].push(filterTask[0])
+    }
 
     setState(stateCopy)
     // setShowText(true)
@@ -81,7 +103,7 @@ export default function RetroTemplate(props) {
                           aria-label='Type a task...'
                           onChange={e => setText(e.target.value)}  
                         />
-                        <button onClick={updateText}>ADD</button>
+                        <button onClick={_=> updateText(props.idx)}>ADD</button>
                         </div>
                       : <h4>{props.item.text}</h4>
                     }
@@ -91,9 +113,9 @@ export default function RetroTemplate(props) {
                     </div>
 
                       <div className='delete-arrow-container'>
-                        <button className='item-btn'>&lt;</button>
+                        <button className='item-btn' onClick={_=> moveItemLeft(props.idx)}>&lt;</button>
                         <button className='item-btn' 
-                        onClick={deleteItem}
+                        onClick={_=> deleteItem(props.idx)}
                         >&times;</button>
                         <button className='item-btn' onClick={_=> moveItemRight(props.idx)}>&gt;</button>
                       </div>
