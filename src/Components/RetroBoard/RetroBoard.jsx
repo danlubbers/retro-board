@@ -20,13 +20,6 @@ const newItem = () => {
   }
   // console.log(state)
 
-  // // Move Item to the Right
-  // const moveRightWentWell = idx => {
-  //   setToImprove([...toImprove, wentWell.filter((item, currentIdx) => currentIdx === idx ? item : null)])
-  //   deleteWentWellItem(idx);
-  // } 
-
-
   return (    
       <>
         <div className='template-card'>

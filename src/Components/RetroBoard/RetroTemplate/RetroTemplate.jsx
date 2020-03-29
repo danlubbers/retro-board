@@ -4,7 +4,7 @@ import { StateContext } from '../../../context/stateContext';
 import LikeButton from '../LikeButton/LikeButton';
 
 export default function RetroTemplate(props) {
-// console.log({props})
+
   const [state, setState] = useContext(StateContext);
   const [text, setText] = useState(props.item.text);
   const [showText, setShowText] = useState(false);
@@ -47,14 +47,12 @@ export default function RetroTemplate(props) {
     }
 
     else if(filterTask[0].boardName === 'actionItems') {
-      // console.log(stateCopy.toImprove)  
       stateCopy['actionItems'].splice(idx, 1)
       filterTask[0]['boardName'] = 'wentWell';
       stateCopy['wentWell'].push(filterTask[0])
     }
 
     setState(stateCopy)
-    // setShowText(true)
     console.log({state})
   }
 
@@ -77,14 +75,12 @@ export default function RetroTemplate(props) {
     }
 
     else if(filterTask[0].boardName === 'actionItems') {
-      // console.log(stateCopy.toImprove)  
       stateCopy['actionItems'].splice(idx, 1)
       filterTask[0]['boardName'] = 'toImprove';
       stateCopy['toImprove'].push(filterTask[0])
     }
 
     setState(stateCopy)
-    // setShowText(true)
     console.log({state})
   }
 
@@ -93,7 +89,7 @@ export default function RetroTemplate(props) {
             <div className='item-container'>
              
                   <div key={`List ul - ${props.idx}`} className='individual-items' style={{backgroundColor: props.color}}>
-                    {!showText 
+                    {!showText
                       ? <div className='input-container'>                  
                           <input 
                           key={`Input ${props.idx}`}
