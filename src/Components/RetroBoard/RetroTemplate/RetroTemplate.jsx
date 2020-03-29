@@ -4,7 +4,7 @@ import { StateContext } from '../../../context/stateContext';
 import LikeButton from '../LikeButton/LikeButton';
 
 export default function RetroTemplate(props) {
-console.log({props})
+// console.log({props})
   const [state, setState] = useContext(StateContext);
   const [text, setText] = useState(props.item.text);
   const [showText, setShowText] = useState(false);
@@ -25,34 +25,44 @@ console.log({props})
     stateCopy[props.templateName] = deleteItem;
     setState(stateCopy)
   }
-  console.log(state)
+  // console.log(state)
 
 
   const moveItemRight = (idx) => {
     const stateCopy = {...state};
 
-    let moveIdx = stateCopy[props.templateName][idx];
-    console.log(moveIdx)
-    // const filterTask = stateCopy[props.templateName].filter(stateItem => {
-    //   return stateItem.id === props.item.id
-    // })
+    const filterTask = stateCopy[props.templateName].filter(stateItem => {
+      return stateItem.id === props.item.id
+    })
   
-    if(props.templateName === 'wentWell') {
-      stateCopy['wentWell'].splice(moveIdx, 1)
-      stateCopy['toImprove'].push(moveIdx)
+    console.log({filterTask})
+      
+    if(filterTask[0].boardName === 'wentWell') {
+      // console.log(stateCopy.toImprove)  
+      stateCopy['wentWell'].splice(idx, 1)
+      filterTask[0]['boardName'] = 'toImprove';
+      stateCopy['toImprove'].push(filterTask[0])
+    }
+
+    else if(filterTask[0].boardName === 'toImprove') {
+      // console.log(stateCopy.toImprove)  
+      stateCopy['toImprove'].splice(idx, 1)
+      filterTask[0]['boardName'] = 'actionItems';
+      stateCopy['actionItems'].push(filterTask[0])
+    }
+
+    else if(filterTask[0].boardName === 'actionItems') {
+      // console.log(stateCopy.toImprove)  
+      stateCopy['actionItems'].splice(idx, 1)
+      filterTask[0]['boardName'] = 'wentWell';
+      stateCopy['wentWell'].push(filterTask[0])
     }
     
-    if(props.templateName === 'toImprove') {
-      stateCopy['toImprove'].splice(moveIdx, 1)
-      stateCopy['actionItems'].push(moveIdx)  
-    }
+ 
 
-    if(props.templateName === 'actionItems') {
-      stateCopy['actionItems'].splice(moveIdx, 1)
-      stateCopy['wentWell'].push(moveIdx)      
-    }
 
     setState(stateCopy)
+    // setShowText(true)
     console.log({state})
   }
 

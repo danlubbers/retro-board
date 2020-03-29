@@ -16,7 +16,8 @@ const newItem = () => {
       id: id,
       text: '', 
       thumbsUp: 0,
-      thumbsDown: 0
+      thumbsDown: 0,
+      boardName: props.templateName
     }]
     setState(stateCopy);
 
