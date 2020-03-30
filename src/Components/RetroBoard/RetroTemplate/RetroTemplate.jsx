@@ -12,8 +12,7 @@ export default function RetroTemplate(props) {
   const updateText = idx => {
     const stateCopy = {...state};
     stateCopy[props.templateName].forEach((stateItem, currentIdx) => {
-      const item = {...stateItem};
-      currentIdx === idx ? stateItem.text = text : stateItem = item;
+      currentIdx === idx && (stateItem.text = text);
     })
     setState(stateCopy)
     setShowText(true)
