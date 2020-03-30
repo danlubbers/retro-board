@@ -38,6 +38,10 @@ export default function RetroTemplate(props) {
       stateCopy['wentWell'].splice(idx, 1)
       filterTask[0]['boardName'] = 'toImprove';
       stateCopy['toImprove'].push(filterTask[0])
+      
+      // filterTask[0]['text'] === '' ? setShowText(false) : setShowText(true)
+      // console.log(filterTask[0]['text'])
+      // console.log(showText)
     }
 
     else if(filterTask[0].boardName === 'toImprove') {      
@@ -97,9 +101,9 @@ export default function RetroTemplate(props) {
                           value={text}
                           placeholder='Type a task...'
                           aria-label='Type a task...'
-                          onChange={e => setText(e.target.value)}  
-                        />
-                        <button onClick={_=> updateText(props.idx)}>ADD</button>
+                          onChange={e => setText(e.target.value)}
+                          onBlur={_=> updateText(props.idx)}
+                        />                     
                         </div>
                       : <h4>{props.item.text}</h4>
                     }
