@@ -10,10 +10,9 @@ export const StateProvider = ({ children }) => {
       actionItems: []
     }
   );
- 
 
   return (
-    <StateContext.Provider value={[state, setState]}>
+    <StateContext.Provider value={[state, setState]} >
       { children }
     </StateContext.Provider>
   )

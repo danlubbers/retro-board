@@ -7,7 +7,7 @@ export default function RetroTemplate(props) {
 
   const [state, setState] = useContext(StateContext);
   const [text, setText] = useState(props.item.text);
-  const [showText, setShowText] = useState(false);
+  const [showText, setShowText] = useState(props.item.text ? true : false);
 
   const updateText = idx => {
     const stateCopy = {...state};
@@ -38,10 +38,6 @@ export default function RetroTemplate(props) {
       stateCopy['wentWell'].splice(idx, 1)
       filterTask[0]['boardName'] = 'toImprove';
       stateCopy['toImprove'].push(filterTask[0])
-      
-      // filterTask[0]['text'] === '' ? setShowText(false) : setShowText(true)
-      // console.log(filterTask[0]['text'])
-      // console.log(showText)
     }
 
     else if(filterTask[0].boardName === 'toImprove') {      
