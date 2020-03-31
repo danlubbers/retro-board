@@ -18,7 +18,6 @@ const newItem = () => {
     }]
     setState(stateCopy);
   }
-  // console.log(state)
 
   return (    
       <>
@@ -53,7 +52,7 @@ const newItem = () => {
 RetroBoard.propTypes = {
   color: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
-  templateName: PropTypes.string.isRequired
+  templateName: PropTypes.string.isRequired,
 }
 
 

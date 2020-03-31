@@ -11,10 +11,10 @@ export default function RetroTemplate(props) {
 
   const updateText = idx => {
     const stateCopy = {...state};
-    stateCopy[props.templateName].forEach((stateItem, currentIdx) => {
-      currentIdx === idx && (stateItem.text = text);
-    })
+    stateCopy[props.templateName].forEach((stateItem, currentIdx) => currentIdx === idx && (stateItem.text = text))
     setState(stateCopy)
+
+    console.log({stateCopy})
     setShowText(true)
   }
 
@@ -31,8 +31,6 @@ export default function RetroTemplate(props) {
     const stateCopy = {...state};
     const filterTask = stateCopy[props.templateName].filter((stateItem, currentIdx) => currentIdx === idx);
   
-    console.log({filterTask})
-      
     if(filterTask[0].boardName === 'wentWell') {
       stateCopy['wentWell'].splice(idx, 1)
       filterTask[0]['boardName'] = 'toImprove';
@@ -58,9 +56,7 @@ export default function RetroTemplate(props) {
   const moveItemLeft = idx => {
     const stateCopy = {...state};
     const filterTask = stateCopy[props.templateName].filter((stateItem, currentIdx) => currentIdx === idx);
-  
-    console.log({filterTask})
-      
+    
     if(filterTask[0].boardName === 'wentWell') {
       stateCopy['wentWell'].splice(idx, 1)
       filterTask[0]['boardName'] = 'actionItems';
@@ -97,10 +93,10 @@ export default function RetroTemplate(props) {
                           placeholder='Type a task...'
                           aria-label='Type a task...'
                           onChange={e => setText(e.target.value)}
-                          onBlur={_=> updateText(props.idx)}
+                          onBlur={_=> updateText(props.idx)}                        
                         />                     
                         </div>
-                      : <h4>{props.item.text}</h4>
+                      : <h4 onClick={_=> setShowText(false)}>{props.item.text}</h4>
                     }
 
                      <div className='font-awesome-container'>
