@@ -11,11 +11,22 @@ export default function RetroTemplate(props) {
 
   const updateText = idx => {
     const stateCopy = {...state};
-    stateCopy[props.templateName].forEach((stateItem, currentIdx) => currentIdx === idx && (stateItem.text = text))
+    stateCopy[props.templateName].forEach((stateItem, currentIdx) => currentIdx === idx && (stateItem.text = text));
+
     setState(stateCopy)
 
+    // This verifies if text has been input to change the display from the input field to the users text
+    stateCopy[props.templateName].forEach(stateItem => {
+      if(stateItem.text === '') {
+        setShowText(false)
+      } else {
+        setShowText(true)
+        // This prevents the user from entering multiple items without first filling out the input field
+        props.setAddNew(true)
+      }
+    });
+
     console.log({stateCopy})
-    setShowText(true)
   }
 
   const deleteItem = idx => {
@@ -23,6 +34,7 @@ export default function RetroTemplate(props) {
     const deleteItem = stateCopy[props.templateName].filter((stateItem, currentIdx) => currentIdx !== idx);
     stateCopy[props.templateName] = deleteItem;
     setState(stateCopy)
+    props.setAddNew(true)
   }
   // console.log(state)
 
@@ -31,22 +43,25 @@ export default function RetroTemplate(props) {
     const stateCopy = {...state};
     const filterTask = stateCopy[props.templateName].filter((stateItem, currentIdx) => currentIdx === idx);
   
-    if(filterTask[0].boardName === 'wentWell') {
+    if(filterTask[0].boardName === 'wentWell' && filterTask[0].text !== '') {
       stateCopy['wentWell'].splice(idx, 1)
       filterTask[0]['boardName'] = 'toImprove';
       stateCopy['toImprove'].push(filterTask[0])
+      props.setAddNew(true)
     }
 
-    else if(filterTask[0].boardName === 'toImprove') {      
+    else if(filterTask[0].boardName === 'toImprove' && filterTask[0].text !== '') {      
       stateCopy['toImprove'].splice(idx, 1)
       filterTask[0]['boardName'] = 'actionItems';
       stateCopy['actionItems'].push(filterTask[0])
+      props.setAddNew(true)
     }
 
-    else if(filterTask[0].boardName === 'actionItems') {
+    else if(filterTask[0].boardName === 'actionItems' && filterTask[0].text !== '') {
       stateCopy['actionItems'].splice(idx, 1)
       filterTask[0]['boardName'] = 'wentWell';
       stateCopy['wentWell'].push(filterTask[0])
+      props.setAddNew(true)
     }
 
     setState(stateCopy)
@@ -56,23 +71,26 @@ export default function RetroTemplate(props) {
   const moveItemLeft = idx => {
     const stateCopy = {...state};
     const filterTask = stateCopy[props.templateName].filter((stateItem, currentIdx) => currentIdx === idx);
-    
-    if(filterTask[0].boardName === 'wentWell') {
+  
+    if(filterTask[0].boardName === 'wentWell' && filterTask[0].text !== '') {
       stateCopy['wentWell'].splice(idx, 1)
       filterTask[0]['boardName'] = 'actionItems';
       stateCopy['actionItems'].push(filterTask[0])
+      props.setAddNew(true)
     }
 
-    else if(filterTask[0].boardName === 'toImprove') {      
+    else if(filterTask[0].boardName === 'toImprove' && filterTask[0].text !== '') {      
       stateCopy['toImprove'].splice(idx, 1)
       filterTask[0]['boardName'] = 'wentWell';
       stateCopy['wentWell'].push(filterTask[0])
+      props.setAddNew(true)
     }
 
-    else if(filterTask[0].boardName === 'actionItems') {
+    else if(filterTask[0].boardName === 'actionItems' && filterTask[0].text !== '') {
       stateCopy['actionItems'].splice(idx, 1)
       filterTask[0]['boardName'] = 'toImprove';
       stateCopy['toImprove'].push(filterTask[0])
+      props.setAddNew(true)
     }
 
     setState(stateCopy)
@@ -96,7 +114,9 @@ export default function RetroTemplate(props) {
                           onBlur={_=> updateText(props.idx)}                        
                         />                     
                         </div>
-                      : <h4 onClick={_=> setShowText(false)}>{props.item.text}</h4>
+                      : 
+                        // This onClick allows the user to edit the text
+                        <h4 onClick={_=> setShowText(false)}>{props.item.text}</h4>                       
                     }
 
                      <div className='font-awesome-container'>
@@ -123,5 +143,6 @@ RetroTemplate.propTypes = {
   title: PropTypes.string.isRequired,
   templateName: PropTypes.string.isRequired,
   idx: PropTypes.number.isRequired,
-  item: PropTypes.object.isRequired
+  item: PropTypes.object.isRequired,
+  setAddNew: PropTypes.func.isRequired,
 }
