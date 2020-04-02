@@ -105,18 +105,18 @@ export default function RetroTemplate(props) {
                     {!showText
                       ? <div className='input-container'>                  
                           <input 
-                          key={`Input ${props.idx}`}
-                          type='text'
-                          value={text}
-                          placeholder='Type a task...'
-                          aria-label='Type a task...'
-                          onChange={e => setText(e.target.value)}
-                          onBlur={_=> updateText(props.idx)}                        
-                        />                     
+                            key={`Input ${props.idx}`}
+                            type='text'
+                            value={text}
+                            placeholder='Type a task...'
+                            aria-label='Type a task...'
+                            onChange={e => setText(e.target.value)}
+                            onBlur={_=> updateText(props.idx)}                        
+                          />                     
                         </div>
                       : 
-                        // This onClick allows the user to edit the text
-                        <h4 onClick={_=> setShowText(false)}>{props.item.text}</h4>                       
+                        // This onClick allows the user to edit the text | Additionally a conditional that if there is no text, Click to Edit is shown to the user
+                        <h4 onClick={_=> setShowText(false)}>{props.item.text || 'Click to Edit'}</h4>                       
                     }
 
                      <div className='font-awesome-container'>
