@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://github.com/danlubbers/retro-board/src/assets/retro-board-screenshot.png" alt="retroboard">
+  <img src="https://github.com/danlubbers/retro-board/blob/master/src/assets/retro-board-screenshot.png" alt="retroboard">
 </p>
 
 ## Description
