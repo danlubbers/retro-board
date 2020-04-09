@@ -18,7 +18,8 @@ export default function RetroTemplate(props) {
     // This verifies if text has been input to change the display from the input field to the users text
     stateCopy[props.templateName].forEach(stateItem => {
       if(stateItem.text === '') {
-        setShowText(false)
+        setShowText(false) 
+        deleteItem(idx) // if no text is inputed when field loses focus, item is deleted.
       } else {
         setShowText(true)
         // This prevents the user from entering multiple items without first filling out the input field
