@@ -1,6 +1,7 @@
 import React from 'react';
 import './App.scss';
 import RetroBoard from './Components/RetroBoard/RetroBoard';
+import Themes from './Components/RetroBoard/Themes/Themes';
 import { StateProvider } from './context/stateContext';
 
 function App() {
@@ -9,6 +10,7 @@ function App() {
       <div className="App">
         <div className='retroboard-container'>
           <h1 className='retroboard-title'>RETROBOARD</h1>
+          <Themes />
           <div className='retrotemplate-container'>
 
             <RetroBoard
