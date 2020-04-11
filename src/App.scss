@@ -13,6 +13,7 @@ $lightgrey: rgb(230, 230, 230);
 @import './Components/RetroBoard/RetroBoard';
 @import './Components/RetroBoard/RetroTemplate/RetroTemplate';
 @import './Components//RetroBoard//LikeButton/LikeButton';
+@import './Components/RetroBoard/Themes/Themes';
 
 body {
   background-color: $eggshell;
@@ -25,6 +26,20 @@ body {
     font: $font-family;
     font-size: 1.5em;
     font-weight: 300;
+  }
+
+  header {
+    width: 100vw;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr)
+
+  }
+   
+  .themes {
+      margin-right: 10px;
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
   }
 }
 

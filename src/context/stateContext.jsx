@@ -9,12 +9,6 @@ export const StateProvider = ({ children }) => {
       toImprove: [],
       actionItems: [],
       theme: 'light',
-      light: {
-        'background-color': 'rgb(230, 230, 230)'
-      },
-      dark: {
-        'background-color': 'rgb(50, 50, 50)'
-      }
     }
   );
 

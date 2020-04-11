@@ -1,39 +1,42 @@
-import React,  { useContext } from 'react';
+import React,  { useState, useContext } from 'react';
 import { StateContext } from '../../../context/stateContext';
 
 
 export default function Themes() {
 
 const [state, setState] = useContext(StateContext);
-console.log({state})
+const [dark] = useState({
+    'color': 'rgb(100, 56, 23)',
+    'background-color': 'rgb(25, 25, 25)',
+});
+const [light] = useState({
+  'background-color': 'rgb(250, 250, 250)'
+});
 
-// const setTheme = () => {
-//   const stateCopy = {...state}
-//   // console.log(state.theme === 'light')
-//   // console.log(stateCopy.dark['background-color'])
-//   let changeTheme = document.body.style.setProperty('background-color', stateCopy.dark['background-color']);
-//   // console.log(changeTheme)
-  
-//   console.log({state})
-// }
 
 const toggleTheme = () => {
-  const stateCopy = {...state}
+  const stateCopy = {...state};
+
   if(state.theme === 'light') {
-    document.body.style.setProperty('background-color', stateCopy.dark['background-color']);
-    let dark = [...stateCopy.filter(e => e.theme = 'dark')];
-    stateCopy = dark
-    console.log(dark)
-    // setState(dark)
+    document.body.style.setProperty('background-color', dark['background-color']);
+    // document.body.style.setProperty('h1', dark['color']);
+    let darkTheme = stateCopy['theme'] = 'dark';
+    stateCopy['theme'] = darkTheme;
+    setState(stateCopy);
   } else {
-    document.body.style.setProperty('background-color', stateCopy.light['background-color']); 
+    document.body.style.setProperty('background-color', light['background-color']); 
+    let lightTheme = stateCopy['theme'] = 'light';
+    stateCopy['theme'] = lightTheme;
+    setState(stateCopy);
   }
 }
 
-
   return (
     <div>
-      <button onClick={toggleTheme}>Light / Dark</button>
+      {state.theme === 'light' ?
+        <button className="toggle-btn dark" onClick={toggleTheme}>Dark</button> :
+        <button className="toggle-btn light" onClick={toggleTheme}>Light</button>
+      }
     </div>
   )
 }

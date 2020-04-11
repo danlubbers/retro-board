@@ -2,15 +2,21 @@ import React from 'react';
 import './App.scss';
 import RetroBoard from './Components/RetroBoard/RetroBoard';
 import Themes from './Components/RetroBoard/Themes/Themes';
-import { StateProvider } from './context/stateContext';
+import { StateProvider} from './context/stateContext';
 
 function App() {
+
   return (
     <StateProvider>
       <div className="App">
         <div className='retroboard-container'>
-          <h1 className='retroboard-title'>RETROBOARD</h1>
-          <Themes />
+          
+          <header>
+            <div className='dummy-div-for-grid'></div>
+            <h1 className='retroboard-title'>RETROBOARD</h1>
+            <div className='themes'><Themes/></div>
+          </header>
+
           <div className='retrotemplate-container'>
 
             <RetroBoard
