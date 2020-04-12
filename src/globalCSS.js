@@ -11,8 +11,4 @@ export const GlobalStyles = createGlobalStyle`
     background: ${({ theme }) => theme.body};
     color: ${({ theme }) => theme.text};
   }
-
-  button {
-    display: block;
-  }
 `;

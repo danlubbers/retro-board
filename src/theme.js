@@ -1,9 +1,9 @@
 export const lightTheme = {
-  body: 'rgb(250, 250, 250)',
-  text: 'rgb(75, 75, 75)',
+  body: '#fafafa',
+  text: '#4b4b4b',
 };
 
 export const darkTheme = {
-  body: 'rgb(25, 25, 25',
-  text: 'rgb(100, 100, 100)',
+  body: '#191919',
+  text: '#646464',
 };
