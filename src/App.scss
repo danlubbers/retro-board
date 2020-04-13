@@ -13,7 +13,6 @@ $lightgrey: rgb(230, 230, 230);
 @import './Components/RetroBoard/RetroBoard';
 @import './Components/RetroBoard/RetroTemplate/RetroTemplate';
 @import './Components//RetroBoard//LikeButton/LikeButton';
-@import './Components/RetroBoard/Themes/Themes';
 
 
 .App {
@@ -37,6 +36,26 @@ $lightgrey: rgb(230, 230, 230);
       display: flex;
       justify-content: flex-end;
       align-items: center;
+  }
+
+  footer {
+    position: absolute;
+    bottom: 1%;
+    left: 50%;
+    transform: translateX(-50%);
+    .footer-text {
+      font-size: 1em;
+    }
+
+    a {
+      color: #4b4b4b;
+      text-decoration: none;;
+    }
+
+    a:hover {
+      color: #a23a37 ;
+      transition: 0.25s;
+    }
   }
 }
 

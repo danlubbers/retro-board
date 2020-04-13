@@ -1,7 +1,6 @@
 import React from 'react';
 import './App.scss';
 import RetroBoard from './Components/RetroBoard/RetroBoard';
-// import Themes from './Components/RetroBoard/Themes/Themes';
 import ToggleTheme from './Components/ToggleTheme/ToggleTheme'
 import { StateProvider } from './context/stateContext';
 import { ThemeProvider } from 'styled-components';
@@ -30,7 +29,6 @@ function App() {
               {/* dummy div for grid positioning */}
               <div /> 
               <h1 className='retroboard-title'>RETROBOARD</h1>
-              {/* <div className='themes'><Themes/></div> */}
               <div className='themes'><ToggleTheme theme={theme} toggleTheme={toggleTheme}/></div>
             </header>
 
@@ -56,6 +54,11 @@ function App() {
         
             </div>
           </div>
+
+            <footer>
+              <h1 className='footer-text'>Site built by: <a href="https://danlubbers.com" target='_blank' rel='noopener noreferrer'>Dan Lubbers</a></h1>
+            </footer>
+            
         </div>
       </StateProvider>
     </ThemeProvider>
