@@ -10,6 +10,15 @@ const ToggleContainer = styled.button`
   border: none;
   border-radius: 5px;
   background: ${({theme}) => theme.body};
+
+    .moon {
+      color: #4b4b4b;
+    }
+
+    .sun {
+      color: #848484;
+    }
+
   `;
 
 const ToggleTheme = ({ theme, toggleTheme }) => {
@@ -18,9 +27,9 @@ const ToggleTheme = ({ theme, toggleTheme }) => {
   return (
         <ToggleContainer lightTheme={isLight} onClick={toggleTheme}>
           {isLight ? 
-            <FontAwesomeIcon icon={faMoon} size='2x' style={{color: '#4b4b4b'}}/>
+            <FontAwesomeIcon className='moon' icon={faMoon} size='2x' />
           :
-            <FontAwesomeIcon icon={faSun} size='2x' style={{color: '#646464'}}/>
+            <FontAwesomeIcon className='sun' icon={faSun} size='2x' />
           }
         </ToggleContainer>
   )

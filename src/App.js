@@ -4,9 +4,7 @@ import RetroBoard from './Components/RetroBoard/RetroBoard';
 // import Themes from './Components/RetroBoard/Themes/Themes';
 import ToggleTheme from './Components/ToggleTheme/ToggleTheme'
 import { StateProvider } from './context/stateContext';
-
 import { ThemeProvider } from 'styled-components';
-
 import { GlobalStyles } from './globalCSS';
 import { useDarkMode } from './useDarkMode';
 import { lightTheme, darkTheme } from './theme';
@@ -29,7 +27,8 @@ function App() {
           <div className='retroboard-container'>
             
             <header>
-              <div className='dummy-div-for-grid'></div>
+              {/* dummy div for grid positioning */}
+              <div /> 
               <h1 className='retroboard-title'>RETROBOARD</h1>
               {/* <div className='themes'><Themes/></div> */}
               <div className='themes'><ToggleTheme theme={theme} toggleTheme={toggleTheme}/></div>

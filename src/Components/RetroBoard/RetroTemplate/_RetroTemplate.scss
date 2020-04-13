@@ -7,7 +7,7 @@
   .template-name {
     margin: 10px 0;
     font-size: 1.5em;
-    color: $charcoal;
+    // color: $charcoal;
   }
 
   .template-container {
@@ -33,8 +33,7 @@
         width: 95%;
         margin: 10px 0;
         padding-top: 10px;
-        border-radius: 5px;
-        
+        border-radius: 5px;        
       }
       
       .input-container {
@@ -62,6 +61,7 @@
           border-radius: 5px;
         }
       }
+
       h4 {
         color: $eggshell;
       }
