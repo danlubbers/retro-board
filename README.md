@@ -21,6 +21,8 @@ A retrospective board is used within the Scrum workflow. Scrum is the most popul
 * [x] The user should be able to type text inside of each retrospective item. This text will be stored in state. The only time the text can change is when the user is typing inside the retrospective item.
 * [x] The user should be able to delete each retrospective item. When deleted, the retrospective item should be removed from state and the application.
 * [x] The user should be able to move the retrospective item into a different category by clicking on a left or right arrow. If there is not a category to the left, then clicking the arrow should move the retrospective item to the rightmost category. The same applies to if there is no category to the right but in reverse. When the item moves from one category to the next, the retrospective item’s user input, visual structure, and appearance (with the exception of color) should stay the same.
+
+## Bonus Requirements
 * [x] Add a “thumbs up” and “thumbs down” button (or other clickable UI elements) to your retrospective items. Clicking on one of these buttons should increase the number of “thumbs up” or “thumbs down” votes. Display the number of “thumbs up” and “thumbs down” votes in each retrospective item.
 * [x] Validate user input. Make text within the retrospective item required. When the retrospective item loses focus or is submitted (the type of event will depend on how you design the functionality of your application), the text should be validated in some way. Suggestions are to remove the retrospective item from the board or display an error message. I chose to remove the item if not text has been entered upon losing focus.
 
