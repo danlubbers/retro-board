@@ -10,6 +10,7 @@ const ToggleContainer = styled.button`
   border: none;
   border-radius: 5px;
   background: ${({theme}) => theme.body};
+  cursor: pointer;
 
     .moon {
       color: #4b4b4b;
